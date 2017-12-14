@@ -381,6 +381,7 @@
 <link href="#rfc.section.2.1" rel="Chapter" title="2.1 DNS URI Record">
 <link href="#rfc.section.2.1.1" rel="Chapter" title="2.1.1 DNS URI Record with a data: scheme">
 <link href="#rfc.section.2.2" rel="Chapter" title="2.2 Well-Known URL">
+<link href="#rfc.section.2.3" rel="Chapter" title="2.3 Handling of Requests for WHOAMI Information">
 <link href="#rfc.section.3" rel="Chapter" title="3 Security Considerations">
 <link href="#rfc.section.4" rel="Chapter" title="4 Privacy Considerations">
 <link href="#rfc.section.5" rel="Chapter" title="5 IANA Considerations">
@@ -460,6 +461,8 @@
 </li>
 </ul><li>2.2.   <a href="#rfc.section.2.2">Well-Known URL</a>
 </li>
+<li>2.3.   <a href="#rfc.section.2.3">Handling of Requests for WHOAMI Information</a>
+</li>
 </ul><li>3.   <a href="#rfc.section.3">Security Considerations</a>
 </li>
 <li>4.   <a href="#rfc.section.4">Privacy Considerations</a>
@@ -481,8 +484,8 @@
   <h1 id="rfc.section.1">
 <a href="#rfc.section.1">1.</a> Introduction</h1>
 <p id="rfc.section.1.p.1">It is common for <a href="#Definitions" class="xref">Domain Registries</a> - whether country-code or generic, operating at the second-level or lower - to operate a directory service to allow interested parties to identify the entity to which a <a href="#Definitions" class="xref">Domain</a> has been allocated. Typically, access to this directory service is provided using <a href="#RFC3912" class="xref">WHOIS</a> or <a href="#RFC7480" class="xref">RDAP</a> services.</p>
-<p id="rfc.section.1.p.2">Consequently, Domain Registries have developed a model whereby the <a href="#RFC5733" class="xref">Extensible Provisioning Protocol (EPP)</a> is used to collect large volumes of data - much of which could be considered Personal Data (see <a href="#RFC6973" class="xref">RFC 6973</a> for further discussion) - and then make this data available, with few restrictions, to anyone who might want it, for reasons both benign and malign. This is especially the case for generic Top-Level Domain Registries, who are subject to policy obligations which, as of writing, require a uniform data model for registration data, and do not permit differentiated access to this data.</p>
-<p id="rfc.section.1.p.3">This document proposes a decentralised alternative to traditional WHOIS directories. To avoid the need for Domain Registries to collect registration data, it provides a means by which <a href="#Definitions" class="xref">Domain Operators</a> may, at their own discretion (or in compliance with a Domain Registry's policy requirements), publish their contact information in a machine-readable manner.</p>
+<p id="rfc.section.1.p.2">Consequently, Domain Registries have developed a model whereby the <a href="#RFC5733" class="xref">Extensible Provisioning Protocol (EPP)</a> is used to collect large volumes of data - much of which is Personal Data (see <a href="#RFC6973" class="xref">RFC 6973</a> for further discussion) - and then make this data available, with few restrictions, to anyone who might want it, for reasons both benign and malign. This is especially the case for generic Top-Level Domain Registries, who are subject to policy obligations which, as of writing, require a uniform data model for <a href="#Definitions" class="xref">Registration Data</a>, and do not permit differentiated access to this data.</p>
+<p id="rfc.section.1.p.3">This document proposes a decentralised alternative to traditional WHOIS directories. To avoid the need for Domain Registries to collect Registration Data, it provides a means by which <a href="#Definitions" class="xref">Domain Operators</a> may, at their own discretion (or in compliance with a Domain Registry's policy requirements), publish their contact information in a machine-readable manner.</p>
 <p id="rfc.section.1.p.4">It is contended that this approach eliminates the need for registries to maintain large databases of contact information, while still allowing supporting most of the uses to which such databases are put.</p>
 <h1 id="rfc.section.1.1">
 <a href="#rfc.section.1.1">1.1.</a> Conventions Used in This Document</h1>
@@ -495,7 +498,7 @@
 
 <dl>
 <dt>Domain:</dt>
-<dd style="margin-left: 8">The atomic unit of registration in a Domain Registry.</dd>
+<dd style="margin-left: 8">The atomic unit of registration in a Domain Registry. TODO.</dd>
 <dt>Domain Operator:</dt>
 <dd style="margin-left: 8">TODO</dd>
 <dt>Domain Registry:</dt>
@@ -535,6 +538,10 @@ tYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=</pre>
 <p id="rfc.section.2.2.p.1">Domain Operators MAY publish their contact information at the following URL:</p>
 <pre>http://example.com/.well-known/whoami.vcf</pre>
 <p id="rfc.section.2.2.p.2">The "whoami.vcf" segment has been registered in the "Well-Known URI Registry" (see <a href="#RFC5785" class="xref">RFC 5785</a>).</p>
+<h1 id="rfc.section.2.3">
+<a href="#rfc.section.2.3">2.3.</a> Handling of Requests for WHOAMI Information</h1>
+<p id="rfc.section.2.3.p.1">Domain Operators MAY configure the HTTP server which hosts their WHOAMI information to restrict access to this information (based some form of authentication such as <a href="#RFC7617" class="xref">HTTP BasicAuthentication</a> or <a href="#RFC6749" class="xref">OAuth 2.0</a>.</p>
+<p id="rfc.section.2.3.p.2">TODO</p>
 <h1 id="rfc.section.3">
 <a href="#rfc.section.3">3.</a> <a href="#Security" id="Security">Security Considerations</a>
 </h1>
@@ -597,6 +604,11 @@ tYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=</pre>
 <a>Hollenbeck, S.</a>, "<a href="https://tools.ietf.org/html/rfc5733">Extensible Provisioning Protocol (EPP) Contact Mapping</a>", STD 69, RFC 5733, DOI 10.17487/RFC5733, August 2009.</td>
 </tr>
 <tr>
+<td class="reference"><b id="RFC6749">[RFC6749]</b></td>
+<td class="top">
+<a>Hardt, D.</a>, "<a href="https://tools.ietf.org/html/rfc6749">The OAuth 2.0 Authorization Framework</a>", RFC 6749, DOI 10.17487/RFC6749, October 2012.</td>
+</tr>
+<tr>
 <td class="reference"><b id="RFC6973">[RFC6973]</b></td>
 <td class="top">
 <a>Cooper, A.</a>, <a>Tschofenig, H.</a>, <a>Aboba, B.</a>, <a>Peterson, J.</a>, <a>Morris, J.</a>, <a>Hansen, M.</a> and <a>R. Smith</a>, "<a href="https://tools.ietf.org/html/rfc6973">Privacy Considerations for Internet Protocols</a>", RFC 6973, DOI 10.17487/RFC6973, July 2013.</td>
@@ -605,6 +617,11 @@ tYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=</pre>
 <td class="reference"><b id="RFC7480">[RFC7480]</b></td>
 <td class="top">
 <a>Newton, A.</a>, <a>Ellacott, B.</a> and <a>N. Kong</a>, "<a href="https://tools.ietf.org/html/rfc7480">HTTP Usage in the Registration Data Access Protocol (RDAP)</a>", RFC 7480, DOI 10.17487/RFC7480, March 2015.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC7617">[RFC7617]</b></td>
+<td class="top">
+<a>Reschke, J.</a>, "<a href="https://tools.ietf.org/html/rfc7617">The 'Basic' HTTP Authentication Scheme</a>", RFC 7617, DOI 10.17487/RFC7617, September 2015.</td>
 </tr>
 <tr>
 <td class="reference"><b id="RFC7719">[RFC7719]</b></td>

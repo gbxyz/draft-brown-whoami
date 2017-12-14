@@ -8,9 +8,11 @@
 <!ENTITY RFC5785 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5785.xml">
 <!ENTITY RFC6335 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6335.xml">
 <!ENTITY RFC6350 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6350.xml">
+<!ENTITY RFC6749 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6749.xml">
 <!ENTITY RFC6973 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6973.xml">
 <!ENTITY RFC7480 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7480.xml">
 <!ENTITY RFC7553 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7553.xml">
+<!ENTITY RFC7617 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7617.xml">
 <!ENTITY RFC7719 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7719.xml">
 ]>
 <?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?>
@@ -67,19 +69,19 @@
 		<t>Consequently, Domain Registries have developed a model
 		whereby the <xref target="RFC5733">Extensible Provisioning
 		Protocol (EPP)</xref> is used to collect large volumes of
-		data - much of which could be considered Personal Data 
+		data - much of which is Personal Data
 		(see <xref target="RFC6973">RFC 6973</xref> for further discussion) - and then make this
 		data available, with few restrictions, to anyone
 		who might want it, for reasons both benign and
 		malign. This is especially the case for generic Top-Level
 		Domain Registries, who are subject to policy obligations
 		which, as of writing, require a uniform data model for
-		registration data, and do not permit differentiated
+		<xref target="Definitions">Registration Data</xref>, and do not permit differentiated
 		access to this data.</t>
 
 		<t>This document proposes a decentralised alternative to
 		traditional WHOIS directories. To avoid the need for Domain
-		Registries to collect registration data, it provides a means
+		Registries to collect Registration Data, it provides a means
 		by which <xref target="Definitions">Domain Operators</xref>
 		may, at their own discretion (or in compliance with a Domain
 		Registry's policy requirements), publish their contact
@@ -103,7 +105,7 @@
 
 			<t><list style="hanging">
 				<t hangText="Domain:">The atomic unit of registration
-				in a Domain Registry.</t>
+				in a Domain Registry. TODO.</t>
 				<t hangText="Domain Operator:">TODO</t>
 				<t hangText="Domain Registry:">TODO</t>
 				<t hangText="Domain Registrant:">TODO</t>
@@ -175,6 +177,15 @@ tYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=</artwork>
 			target="RFC5785">RFC 5785</xref>).</t>
 		</section>
 
+		<section title="Handling of Requests for WHOAMI Information">
+			<t>Domain Operators MAY configure the HTTP server
+			which hosts their WHOAMI information to restrict access
+			to this information (based some form of authentication
+			such as <xref target="RFC7617">HTTP BasicAuthentication</xref>
+			or <xref target="RFC6749">OAuth 2.0</xref>.</t>
+			<t>TODO</t>
+		</section>
+
 	</section>
 	<section anchor="Security" title="Security Considerations">
 		<t>TODO.</t>
@@ -199,8 +210,10 @@ tYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=</artwork>
 	<references title="Informative References">
 		&RFC3912;
 		&RFC5733;
+		&RFC6749;
 		&RFC6973;
 		&RFC7480;
+		&RFC7617;
 		&RFC7719;
 	</references>
 </back>
