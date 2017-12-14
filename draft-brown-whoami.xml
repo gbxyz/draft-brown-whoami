@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd"
+[
+<!ENTITY RFC2119 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
+<!ENTITY RFC2397 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2397.xml">
+<!ENTITY RFC3912 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3912.xml">
+<!ENTITY RFC5733 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5733.xml">
+<!ENTITY RFC5785 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5785.xml">
+<!ENTITY RFC6335 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6335.xml">
+<!ENTITY RFC6350 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6350.xml">
+<!ENTITY RFC6973 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6973.xml">
+<!ENTITY RFC7480 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7480.xml">
+<!ENTITY RFC7553 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7553.xml">
+<!ENTITY RFC7719 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7719.xml">
+]>
+<?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?>
+<?rfc strict="yes" ?>
+<?rfc toc="yes"?>
+<?rfc tocdepth="4"?>
+<?rfc symrefs="yes"?>
+<?rfc sortrefs="yes" ?>
+<?rfc compact="yes" ?>
+<?rfc subcompact="no" ?>
+<?rfc comments="yes" ?>
+<?rfc inline="yes" ?>
+<rfc category="exp" docName="draft-brown-whoami-00" ipr="trust200902">
+
+<front>
+	<title abbrev="Domain WHOAMI">A Method For Identifying a Domain Operator's
+		Point of Contact (WHOAMI)</title>
+
+	<author fullname="Gavin Brown" initials="G" surname="Brown">
+		<organization>CentralNic Group plc</organization>
+		<address>
+			<postal>
+				<street>35-39 Moorgate</street>
+				<city>London</city>
+				<region>England</region>
+				<code>EC2R 6AR</code>
+				<country>GB</country>
+			</postal>
+			<phone>+44 20 33 88 0600</phone>
+			<email>gavin.brown@centralnic.com</email>
+			<uri>https://www.centralnic.com</uri>
+		</address>
+	</author>
+	<date month="December" year="2017" />
+	<area>Applications</area>
+	<workgroup>Internet Engineering Task Force</workgroup>
+
+	<abstract><t>This document proposes a decentralised alternative	to
+		traditional WHOIS directories.</t></abstract>
+</front>
+
+<middle>
+	<section title="Introduction">
+		<t>It is common for Domain Registries - whether
+		country-code or generic, operating at the second-level or
+		lower - to operate a directory service to allow interested
+		parties to identify the entity to which a Domain has been
+		allocated. Typically, access to this directory service is
+		provided using <xref target="RFC3912">WHOIS</xref> or <xref
+		target="RFC7480">RDAP</xref> services.</t>
+
+		<t>Consequently, Domain Registries have developed a model
+		whereby the <xref target="RFC5733">Extensible Provisioning
+		Protocol (EPP)</xref> is used to collect large volumes of
+		data - much of which could be considered Personal Data 
+		(see <xref target="RFC6973"/> for further discussion) - and then make this
+		data available, with few restrictions, to anyone on the
+		internet who might want it, for reasons both benign and
+		malign. This is especially the case for generic Top-Level
+		Domain Registries, who are subject to policy obligations
+		which, as of writing, require a uniform data model for
+		registration data, and do not permit differentiated
+		access to this data.</t>
+
+		<t>This document proposes a decentralised alternative to
+		traditional WHOIS directories. To avoid the need for Domain
+		Registries to collect registration data, it provides a means
+		by which Domain Operators may, at their own discretion,
+		publish their contact information in a machine-readable
+		manner.</t>
+
+		<t>It is contended that this approach eliminates the need for
+		registries to maintain large databases of contact information,
+		while still allowing supporting most of the uses to which such
+		databases are put.</t>
+
+		<section title="Conventions Used in This Document"><t>The key
+		words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+		"SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL"
+		in this document are to be interpreted as described in <xref
+		target="RFC2119">RFC 2119</xref>.</t>
+		</section>
+
+		<section title="Definitions">
+			<t>In addition to the terms definied in this section, this document
+			makes use of the terminology defined in <xref target="RFC7719"/>.</t>
+
+			<t><list style="hanging">
+				<t hangText="Domain:">The atomic unit of registration
+				in a Domain Registry.</t>
+				<t hangText="Domain Operator:">TODO</t>
+				<t hangText="Domain Registry:">TODO</t>
+				<t hangText="Domain Registrant:">TODO</t>
+				<t hangText="Registration Data:">TODO</t>
+				<t hangText="Point of Contact:">TODO</t>
+			</list></t>
+		</section>
+
+	</section>
+
+	<section title="WHOAMI">
+		<t>Domain Operators MAY choose to publish a Point of Contact (PoC)
+		in conformance with this specification in <xref
+		target="RFC6350">vCard</xref> format. This PoC
+		may be (a) published at a well-known URL (as decribed in
+		<xref target="wellknown"/>) or (b) at a URL indicated by a <xref
+		target="RFC7553">URI record</xref> published in the DNS (as
+		described in <xref target="dnsuri"/>).</t>
+
+		<t>Implementers of software which consumes WHOAMI information
+		SHOULD first perform a DNS query for the URI record for a
+		Domain, falling back to the well-known URL if the query returns
+		an error.</t>
+
+		<section anchor="dnsuri" title="DNS URI Record">
+			<t>Domain Operators MAY publish the URL of their
+			contact information as a URI record. An example of
+			such a record is below:</t>
+			<figure>
+<artwork>_nicname._tcp.example.com. IN URI (
+                            10 ; Priority
+                            1 ; Weight
+                            "https://example.com/whoami.vcf" ; Target )</artwork>
+			</figure>
+			<t>Note: the Owner Name, Priority, Weight, and Target
+			in the above record are illustrative only.</t>
+
+			<t>The Service Tag of the URI record is constructed
+			as per Section 4.1 of <xref target="RFC7553"/>, with
+			the "_nicname" tag being derived from the "Who Is
+			Protocol" entry in the "Service	Name and Transport
+			Protocol Port Number Registry (<xref target="RFC6335"/>).</t>
+
+			<section title="DNS URI Record with a data: scheme">
+				<t>Domain Operators MAY publish a record with a
+				<xref target="RFC2397">"data:" scheme</xref>.
+				This allows the PoC data to be embedded in the
+				URI record itself. An example of such a URI
+				is below:</t>
+				<figure>
+					<artwork>data:text/vcard;charset=utf-8;base64,QkVHSU46VkNBUkQNClZFUlNJT046NC4wDQp
+VSUQ6dXJuOnV1aWQ6NGZiZTg5NzEtMGJjMy00MjRjLTljMjYtMzZjM2UxZWZmNmIxDQpGTjt
+QSUQ9MS4xOkouIERvZQ0KTjpEb2U7Si47OzsNCkVNQUlMO1BJRD0xLjE6amRvZUBleGFtcGx
+lLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS00NzI3LTg4MDM
+tYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=</artwork>
+				</figure>
+			</section>
+		</section>
+
+		<section anchor="wellknown" title="Well-Known URL">
+			<t>Domain Operators MAY publish their contact
+			information at the following URL:</t>
+			<figure>
+				<artwork>http://example.com/.well-known/whoami.vcf</artwork>
+			</figure>
+
+			<t>The "whoami.vcf" segment has been registered in
+			the "Well-Known URI Registry" (<xref
+			target="RFC5785"/>).</t>
+		</section>
+
+	</section>
+	<section anchor="Security" title="Security Considerations">
+		<t>TODO.</t>
+	</section>
+	<section anchor="Privacy" title="Privacy Considerations">
+		<t>TODO.</t>
+	</section>
+	<section anchor="IANA" title="IANA Considerations">
+		<t>TODO.</t>
+	</section>
+</middle>
+
+<back>
+	<references title="Normative References">
+		&RFC2119;
+		&RFC2397;
+		&RFC5785;
+		&RFC6335;
+		&RFC6350;
+		&RFC7553;
+	</references>
+	<references title="Informative References">
+		&RFC3912;
+		&RFC5733;
+		&RFC6973;
+		&RFC7480;
+		&RFC7719;
+	</references>
+</back>
+
+</rfc>
