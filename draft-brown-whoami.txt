@@ -77,34 +77,34 @@ Table of Contents
 
 1.  Introduction
 
-   It is common for Domain Registries - whether country-code or generic,
-   operating at the second-level or lower - to operate a directory
-   service to allow interested parties to identify the entity to which a
-   Domain has been allocated.  Typically, access to this directory
-   service is provided using WHOIS [RFC3912] or RDAP [RFC7480] services.
+   It is common for Domain Registries (Section 1.2) - whether country-
+   code or generic, operating at the second-level or lower - to operate
+   a directory service to allow interested parties to identify the
+   entity to which a Domain (Section 1.2) has been allocated.
+   Typically, access to this directory service is provided using WHOIS
+   [RFC3912] or RDAP [RFC7480] services.
 
    Consequently, Domain Registries have developed a model whereby the
    Extensible Provisioning Protocol (EPP) [RFC5733] is used to collect
    large volumes of data - much of which could be considered Personal
-   Data (see [RFC6973] for further discussion) - and then make this data
-   available, with few restrictions, to anyone on the internet who might
-   want it, for reasons both benign and malign.  This is especially the
-   case for generic Top-Level Domain Registries, who are subject to
-   policy obligations which, as of writing, require a uniform data model
-   for registration data, and do not permit differentiated access to
-   this data.
+   Data (see RFC 6973 [RFC6973] for further discussion) - and then make
+   this data available, with few restrictions, to anyone who might want
+   it, for reasons both benign and malign.  This is especially the case
+   for generic Top-Level Domain Registries, who are subject to policy
+   obligations which, as of writing, require a uniform data model for
+   registration data, and do not permit differentiated access to this
+   data.
 
    This document proposes a decentralised alternative to traditional
    WHOIS directories.  To avoid the need for Domain Registries to
    collect registration data, it provides a means by which Domain
-   Operators may, at their own discretion, publish their contact
-   information in a machine-readable manner.
+   Operators (Section 1.2) may, at their own discretion (or in
+   compliance with a Domain Registry's policy requirements), publish
+   their contact information in a machine-readable manner.
 
    It is contended that this approach eliminates the need for registries
    to maintain large databases of contact information, while still
    allowing supporting most of the uses to which such databases are put.
-
-
 
 
 
@@ -123,7 +123,7 @@ Internet-Draft                Domain WHOAMI                December 2017
 1.2.  Definitions
 
    In addition to the terms definied in this section, this document
-   makes use of the terminology defined in [RFC7719].
+   makes use of the terminology defined in RFC 7719 [RFC7719].
 
    Domain:  The atomic unit of registration in a Domain Registry.
 
@@ -135,15 +135,16 @@ Internet-Draft                Domain WHOAMI                December 2017
 
    Registration Data:  TODO
 
-   Point of Contact:  TODO
+   Point of Contact (PoC):  TODO
 
 2.  WHOAMI
 
-   Domain Operators MAY choose to publish a Point of Contact (PoC) in
-   conformance with this specification in vCard [RFC6350] format.  This
-   PoC may be (a) published at a well-known URL (as decribed in
-   Section 2.2) or (b) at a URL indicated by a URI record [RFC7553]
-   published in the DNS (as described in Section 2.1).
+   Domain Operators MAY choose to publish a Point of Contact (PoC)
+   (Section 1.2) in conformance with this specification in vCard
+   [RFC6350] format.  This PoC may be published (a) at a URL indicated
+   by a URI record [RFC7553] published in the DNS (as described in
+   Section 2.1), or (b) at a well-known URL (as decribed in
+   Section 2.2).
 
    Implementers of software which consumes WHOAMI information SHOULD
    first perform a DNS query for the URI record for a Domain, falling
@@ -164,16 +165,15 @@ Internet-Draft                Domain WHOAMI                December 2017
 
 
 
-
 Brown                     Expires June 17, 2018                 [Page 3]
 
 Internet-Draft                Domain WHOAMI                December 2017
 
 
    The Service Tag of the URI record is constructed as per Section 4.1
-   of [RFC7553], with the "_nicname" tag being derived from the "Who Is
-   Protocol" entry in the "Service Name and Transport Protocol Port
-   Number Registry ([RFC6335]).
+   of RFC 7553 [RFC7553], with the "_nicname" tag being derived from the
+   "Who Is Protocol" entry in the "Service Name and Transport Protocol
+   Port Number Registry (see RFC 6335 [RFC6335]).
 
 2.1.1.  DNS URI Record with a data: scheme
 
@@ -195,7 +195,7 @@ tYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=
    http://example.com/.well-known/whoami.vcf
 
    The "whoami.vcf" segment has been registered in the "Well-Known URI
-   Registry" ([RFC5785]).
+   Registry" (see RFC 5785 [RFC5785]).
 
 3.  Security Considerations
 

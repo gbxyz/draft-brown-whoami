@@ -480,16 +480,17 @@
 
   <h1 id="rfc.section.1">
 <a href="#rfc.section.1">1.</a> Introduction</h1>
-<p id="rfc.section.1.p.1">It is common for Domain Registries - whether country-code or generic, operating at the second-level or lower - to operate a directory service to allow interested parties to identify the entity to which a Domain has been allocated. Typically, access to this directory service is provided using <a href="#RFC3912" class="xref">WHOIS</a> or <a href="#RFC7480" class="xref">RDAP</a> services.</p>
-<p id="rfc.section.1.p.2">Consequently, Domain Registries have developed a model whereby the <a href="#RFC5733" class="xref">Extensible Provisioning Protocol (EPP)</a> is used to collect large volumes of data - much of which could be considered Personal Data (see <a href="#RFC6973" class="xref">[RFC6973]</a> for further discussion) - and then make this data available, with few restrictions, to anyone on the internet who might want it, for reasons both benign and malign. This is especially the case for generic Top-Level Domain Registries, who are subject to policy obligations which, as of writing, require a uniform data model for registration data, and do not permit differentiated access to this data.</p>
-<p id="rfc.section.1.p.3">This document proposes a decentralised alternative to traditional WHOIS directories. To avoid the need for Domain Registries to collect registration data, it provides a means by which Domain Operators may, at their own discretion, publish their contact information in a machine-readable manner.</p>
+<p id="rfc.section.1.p.1">It is common for <a href="#Definitions" class="xref">Domain Registries</a> - whether country-code or generic, operating at the second-level or lower - to operate a directory service to allow interested parties to identify the entity to which a <a href="#Definitions" class="xref">Domain</a> has been allocated. Typically, access to this directory service is provided using <a href="#RFC3912" class="xref">WHOIS</a> or <a href="#RFC7480" class="xref">RDAP</a> services.</p>
+<p id="rfc.section.1.p.2">Consequently, Domain Registries have developed a model whereby the <a href="#RFC5733" class="xref">Extensible Provisioning Protocol (EPP)</a> is used to collect large volumes of data - much of which could be considered Personal Data (see <a href="#RFC6973" class="xref">RFC 6973</a> for further discussion) - and then make this data available, with few restrictions, to anyone who might want it, for reasons both benign and malign. This is especially the case for generic Top-Level Domain Registries, who are subject to policy obligations which, as of writing, require a uniform data model for registration data, and do not permit differentiated access to this data.</p>
+<p id="rfc.section.1.p.3">This document proposes a decentralised alternative to traditional WHOIS directories. To avoid the need for Domain Registries to collect registration data, it provides a means by which <a href="#Definitions" class="xref">Domain Operators</a> may, at their own discretion (or in compliance with a Domain Registry's policy requirements), publish their contact information in a machine-readable manner.</p>
 <p id="rfc.section.1.p.4">It is contended that this approach eliminates the need for registries to maintain large databases of contact information, while still allowing supporting most of the uses to which such databases are put.</p>
 <h1 id="rfc.section.1.1">
 <a href="#rfc.section.1.1">1.1.</a> Conventions Used in This Document</h1>
 <p id="rfc.section.1.1.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC2119" class="xref">RFC 2119</a>.</p>
 <h1 id="rfc.section.1.2">
-<a href="#rfc.section.1.2">1.2.</a> Definitions</h1>
-<p id="rfc.section.1.2.p.1">In addition to the terms definied in this section, this document makes use of the terminology defined in <a href="#RFC7719" class="xref">[RFC7719]</a>.</p>
+<a href="#rfc.section.1.2">1.2.</a> <a href="#Definitions" id="Definitions">Definitions</a>
+</h1>
+<p id="rfc.section.1.2.p.1">In addition to the terms definied in this section, this document makes use of the terminology defined in <a href="#RFC7719" class="xref">RFC 7719</a>.</p>
 <p></p>
 
 <dl>
@@ -503,12 +504,12 @@
 <dd style="margin-left: 8">TODO</dd>
 <dt>Registration Data:</dt>
 <dd style="margin-left: 8">TODO</dd>
-<dt>Point of Contact:</dt>
+<dt>Point of Contact (PoC):</dt>
 <dd style="margin-left: 8">TODO</dd>
 </dl>
 <h1 id="rfc.section.2">
 <a href="#rfc.section.2">2.</a> WHOAMI</h1>
-<p id="rfc.section.2.p.1">Domain Operators MAY choose to publish a Point of Contact (PoC) in conformance with this specification in <a href="#RFC6350" class="xref">vCard</a> format. This PoC may be (a) published at a well-known URL (as decribed in <a href="#wellknown" class="xref">Section 2.2</a>) or (b) at a URL indicated by a <a href="#RFC7553" class="xref">URI record</a> published in the DNS (as described in <a href="#dnsuri" class="xref">Section 2.1</a>).</p>
+<p id="rfc.section.2.p.1">Domain Operators MAY choose to publish a <a href="#Definitions" class="xref">Point of Contact (PoC)</a> in conformance with this specification in <a href="#RFC6350" class="xref">vCard</a> format. This PoC may be published (a) at a URL indicated by a <a href="#RFC7553" class="xref">URI record</a> published in the DNS (as described in <a href="#dnsuri" class="xref">Section 2.1</a>), or (b) at a well-known URL (as decribed in <a href="#wellknown" class="xref">Section 2.2</a>).</p>
 <p id="rfc.section.2.p.2">Implementers of software which consumes WHOAMI information SHOULD first perform a DNS query for the URI record for a Domain, falling back to the well-known URL if the query returns an error.</p>
 <h1 id="rfc.section.2.1">
 <a href="#rfc.section.2.1">2.1.</a> <a href="#dnsuri" id="dnsuri">DNS URI Record</a>
@@ -519,7 +520,7 @@
                             1 ; Weight
                             "https://example.com/whoami.vcf" ; Target )</pre>
 <p id="rfc.section.2.1.p.2">Note: the Owner Name, Priority, Weight, and Target in the above record are illustrative only.</p>
-<p id="rfc.section.2.1.p.3">The Service Tag of the URI record is constructed as per Section 4.1 of <a href="#RFC7553" class="xref">[RFC7553]</a>, with the "_nicname" tag being derived from the "Who Is Protocol" entry in the "Service	Name and Transport Protocol Port Number Registry (<a href="#RFC6335" class="xref">[RFC6335]</a>).</p>
+<p id="rfc.section.2.1.p.3">The Service Tag of the URI record is constructed as per Section 4.1 of <a href="#RFC7553" class="xref">RFC 7553</a>, with the "_nicname" tag being derived from the "Who Is Protocol" entry in the "Service	Name and Transport Protocol Port Number Registry (see <a href="#RFC6335" class="xref">RFC 6335</a>).</p>
 <h1 id="rfc.section.2.1.1">
 <a href="#rfc.section.2.1.1">2.1.1.</a> DNS URI Record with a data: scheme</h1>
 <p id="rfc.section.2.1.1.p.1">Domain Operators MAY publish a record with a <a href="#RFC2397" class="xref">"data:" scheme</a>.  This allows the PoC data to be embedded in the URI record itself. An example of such a URI is below:</p>
@@ -533,7 +534,7 @@ tYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=</pre>
 </h1>
 <p id="rfc.section.2.2.p.1">Domain Operators MAY publish their contact information at the following URL:</p>
 <pre>http://example.com/.well-known/whoami.vcf</pre>
-<p id="rfc.section.2.2.p.2">The "whoami.vcf" segment has been registered in the "Well-Known URI Registry" (<a href="#RFC5785" class="xref">[RFC5785]</a>).</p>
+<p id="rfc.section.2.2.p.2">The "whoami.vcf" segment has been registered in the "Well-Known URI Registry" (see <a href="#RFC5785" class="xref">RFC 5785</a>).</p>
 <h1 id="rfc.section.3">
 <a href="#rfc.section.3">3.</a> <a href="#Security" id="Security">Security Considerations</a>
 </h1>

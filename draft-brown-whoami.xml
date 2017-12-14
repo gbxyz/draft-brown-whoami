@@ -54,10 +54,12 @@
 
 <middle>
 	<section title="Introduction">
-		<t>It is common for Domain Registries - whether
+		<t>It is common for <xref target="Definitions">Domain
+		Registries</xref> - whether
 		country-code or generic, operating at the second-level or
 		lower - to operate a directory service to allow interested
-		parties to identify the entity to which a Domain has been
+		parties to identify the entity to which a <xref
+		target="Definitions">Domain</xref> has been
 		allocated. Typically, access to this directory service is
 		provided using <xref target="RFC3912">WHOIS</xref> or <xref
 		target="RFC7480">RDAP</xref> services.</t>
@@ -66,9 +68,9 @@
 		whereby the <xref target="RFC5733">Extensible Provisioning
 		Protocol (EPP)</xref> is used to collect large volumes of
 		data - much of which could be considered Personal Data 
-		(see <xref target="RFC6973"/> for further discussion) - and then make this
-		data available, with few restrictions, to anyone on the
-		internet who might want it, for reasons both benign and
+		(see <xref target="RFC6973">RFC 6973</xref> for further discussion) - and then make this
+		data available, with few restrictions, to anyone
+		who might want it, for reasons both benign and
 		malign. This is especially the case for generic Top-Level
 		Domain Registries, who are subject to policy obligations
 		which, as of writing, require a uniform data model for
@@ -78,9 +80,10 @@
 		<t>This document proposes a decentralised alternative to
 		traditional WHOIS directories. To avoid the need for Domain
 		Registries to collect registration data, it provides a means
-		by which Domain Operators may, at their own discretion,
-		publish their contact information in a machine-readable
-		manner.</t>
+		by which <xref target="Definitions">Domain Operators</xref>
+		may, at their own discretion (or in compliance with a Domain
+		Registry's policy requirements), publish their contact
+		information in a machine-readable manner.</t>
 
 		<t>It is contended that this approach eliminates the need for
 		registries to maintain large databases of contact information,
@@ -94,9 +97,9 @@
 		target="RFC2119">RFC 2119</xref>.</t>
 		</section>
 
-		<section title="Definitions">
+		<section title="Definitions" anchor="Definitions">
 			<t>In addition to the terms definied in this section, this document
-			makes use of the terminology defined in <xref target="RFC7719"/>.</t>
+			makes use of the terminology defined in <xref target="RFC7719">RFC 7719</xref>.</t>
 
 			<t><list style="hanging">
 				<t hangText="Domain:">The atomic unit of registration
@@ -105,20 +108,20 @@
 				<t hangText="Domain Registry:">TODO</t>
 				<t hangText="Domain Registrant:">TODO</t>
 				<t hangText="Registration Data:">TODO</t>
-				<t hangText="Point of Contact:">TODO</t>
+				<t hangText="Point of Contact (PoC):">TODO</t>
 			</list></t>
 		</section>
 
 	</section>
 
-	<section title="WHOAMI">
-		<t>Domain Operators MAY choose to publish a Point of Contact (PoC)
+	<section title="WHOAMI Protocol">
+		<t>Domain Operators MAY choose to publish a <xref target="Definitions">Point of Contact (PoC)</xref>
 		in conformance with this specification in <xref
 		target="RFC6350">vCard</xref> format. This PoC
-		may be (a) published at a well-known URL (as decribed in
-		<xref target="wellknown"/>) or (b) at a URL indicated by a <xref
+		may be published (a) at a URL indicated by a <xref
 		target="RFC7553">URI record</xref> published in the DNS (as
-		described in <xref target="dnsuri"/>).</t>
+		described in <xref target="dnsuri"/>), or (b) at a well-known URL (as decribed in
+		<xref target="wellknown"/>).</t>
 
 		<t>Implementers of software which consumes WHOAMI information
 		SHOULD first perform a DNS query for the URI record for a
@@ -139,10 +142,10 @@
 			in the above record are illustrative only.</t>
 
 			<t>The Service Tag of the URI record is constructed
-			as per Section 4.1 of <xref target="RFC7553"/>, with
+			as per Section 4.1 of <xref target="RFC7553">RFC 7553</xref>, with
 			the "_nicname" tag being derived from the "Who Is
 			Protocol" entry in the "Service	Name and Transport
-			Protocol Port Number Registry (<xref target="RFC6335"/>).</t>
+			Protocol Port Number Registry (see <xref target="RFC6335">RFC 6335</xref>).</t>
 
 			<section title="DNS URI Record with a data: scheme">
 				<t>Domain Operators MAY publish a record with a
@@ -168,8 +171,8 @@ tYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=</artwork>
 			</figure>
 
 			<t>The "whoami.vcf" segment has been registered in
-			the "Well-Known URI Registry" (<xref
-			target="RFC5785"/>).</t>
+			the "Well-Known URI Registry" (see <xref
+			target="RFC5785">RFC 5785</xref>).</t>
 		</section>
 
 	</section>
