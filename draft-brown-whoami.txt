@@ -63,7 +63,7 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
      1.1.  Conventions Used in This Document . . . . . . . . . . . .   3
      1.2.  Definitions . . . . . . . . . . . . . . . . . . . . . . .   3
-   2.  WHOAMI  . . . . . . . . . . . . . . . . . . . . . . . . . . .   3
+   2.  WHOAMI Protocol . . . . . . . . . . . . . . . . . . . . . . .   3
      2.1.  DNS URI Record  . . . . . . . . . . . . . . . . . . . . .   3
        2.1.1.  DNS URI Record with a data: scheme  . . . . . . . . .   4
      2.2.  Well-Known URL  . . . . . . . . . . . . . . . . . . . . .   4
@@ -137,7 +137,7 @@ Internet-Draft                Domain WHOAMI                December 2017
 
    Point of Contact (PoC):  TODO
 
-2.  WHOAMI
+2.  WHOAMI Protocol
 
    Domain Operators MAY choose to publish a Point of Contact (PoC)
    (Section 1.2) in conformance with this specification in vCard
