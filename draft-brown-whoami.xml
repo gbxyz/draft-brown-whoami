@@ -4,6 +4,7 @@
 <!ENTITY RFC2119 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
 <!ENTITY RFC2397 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2397.xml">
 <!ENTITY RFC3912 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3912.xml">
+<!ENTITY RFC5731 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5731.xml">
 <!ENTITY RFC5733 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5733.xml">
 <!ENTITY RFC5785 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5785.xml">
 <!ENTITY RFC6335 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6335.xml">
@@ -70,7 +71,7 @@
 		whereby the <xref target="RFC5733">Extensible Provisioning
 		Protocol (EPP)</xref> is used to collect large volumes of
 		data - much of which is Personal Data
-		(see <xref target="RFC6973">RFC 6973</xref> for further discussion) - and then make this
+		(see <xref target="RFC6973"/> for further discussion) - and then make this
 		data available, with few restrictions, to anyone
 		who might want it, for reasons both benign and
 		malign. This is especially the case for generic Top-Level
@@ -96,21 +97,20 @@
 		words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 		"SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL"
 		in this document are to be interpreted as described in <xref
-		target="RFC2119">RFC 2119</xref>.</t>
+		target="RFC2119"/>.</t>
 		</section>
 
 		<section title="Definitions" anchor="Definitions">
 			<t>In addition to the terms definied in this section, this document
-			makes use of the terminology defined in <xref target="RFC7719">RFC 7719</xref>.</t>
+			makes use of the terminology defined in <xref target="RFC7719"/>.</t>
 
 			<t><list style="hanging">
-				<t hangText="Domain:">The atomic unit of registration
-				in a Domain Registry. TODO.</t>
-				<t hangText="Domain Operator:">TODO</t>
-				<t hangText="Domain Registry:">TODO</t>
-				<t hangText="Domain Registrant:">TODO</t>
-				<t hangText="Registration Data:">TODO</t>
-				<t hangText="Point of Contact (PoC):">TODO</t>
+				<t hangText="Domain:">A domain object as specified in <xref target="RFC5731"/>. In the DNS, this object corresponds to a Delegation of a "child" Zone from the "parent" Zone operated by the Domain Registry.</t>
+				<t hangText="Domain Registry:">The entity which (a) operates a provisioning service (such as EPP) for one or more Zones, the Authoritative server(s) for those Zones, and optionally a WHOIS and/or RDAP service.</t>
+				<t hangText="Domain Registrant:">The entity to whom "ownership" of a Domain is assigned by a Registry.</t>
+				<t hangText="Domain Operator:">The entity or entities responsible for the administration of the Zone in the DNS corresponding to Domain. The Operator of a Domain may or may not also be its Registrant.</t>
+				<t hangText="Registration Data:">Metadata about a Domain object, such as its creation, update, and expiration date, the nameservers to which it is delegated, and the sponsoring registrar, plus a collection of zero or more Points of Contact for the Domain Registrant, Domain Operator and/or other entities responsible for the administration of a Domain.</t>
+				<t hangText="Point of Contact (PoC):">Contact information, including Contact Name, Organisation Name, Postal Addres, email, voice and fax numbers, for a single entity (which may be a natural person or legal entity).</t>
 			</list></t>
 		</section>
 
@@ -127,27 +127,24 @@
 
 		<t>Implementers of software which consumes WHOAMI information
 		SHOULD first perform a DNS query for the URI record for a
-		Domain, falling back to the well-known URL if the query returns
-		an error.</t>
+		Domain, falling back to the well-known URL if the query does not
+        	return a positive result.</t>
 
 		<section anchor="dnsuri" title="DNS URI Record">
 			<t>Domain Operators MAY publish the URL of their
 			contact information as a URI record. An example of
 			such a record is below:</t>
-			<figure>
-<artwork>_nicname._tcp.example.com. IN URI (
-                            10 ; Priority
-                            1 ; Weight
-                            "https://example.com/whoami.vcf" ; Target )</artwork>
+			<figure><artwork>$ORIGIN example.com.
+_nicname._tcp IN URI 10 1 https://example.com/whoami.vcf</artwork>
 			</figure>
 			<t>Note: the Owner Name, Priority, Weight, and Target
 			in the above record are illustrative only.</t>
 
 			<t>The Service Tag of the URI record is constructed
-			as per Section 4.1 of <xref target="RFC7553">RFC 7553</xref>, with
+			as per Section 4.1 of <xref target="RFC7553"/>, with
 			the "_nicname" tag being derived from the "Who Is
 			Protocol" entry in the "Service	Name and Transport
-			Protocol Port Number Registry (see <xref target="RFC6335">RFC 6335</xref>).</t>
+			Protocol Port Number Registry (see <xref target="RFC6335"/>).</t>
 
 			<section title="DNS URI Record with a data: scheme">
 				<t>Domain Operators MAY publish a record with a
@@ -156,11 +153,11 @@
 				URI record itself. An example of such a URI
 				is below:</t>
 				<figure>
-					<artwork>data:text/vcard;charset=utf-8;base64,QkVHSU46VkNBUkQNClZFUlNJT046NC4wDQp
-VSUQ6dXJuOnV1aWQ6NGZiZTg5NzEtMGJjMy00MjRjLTljMjYtMzZjM2UxZWZmNmIxDQpGTjt
-QSUQ9MS4xOkouIERvZQ0KTjpEb2U7Si47OzsNCkVNQUlMO1BJRD0xLjE6amRvZUBleGFtcGx
-lLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS00NzI3LTg4MDM
-tYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=</artwork>
+					<artwork>data:text/vcard;charset=utf-8;base64,QkVHSU46VkNBUkQNClZFUlNJT046NC4w
+DQpVSUQ6dXJuOnV1aWQ6NGZiZTg5NzEtMGJjMy00MjRjLTljMjYtMzZjM2UxZWZmNmIxD
+QpGTjtQSUQ9MS4xOkouIERvZQ0KTjpEb2U7Si47OzsNCkVNQUlMO1BJRD0xLjE6amRvZU
+BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
+0NzI3LTg4MDMtYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=</artwork>
 				</figure>
 			</section>
 		</section>
@@ -174,7 +171,7 @@ tYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=</artwork>
 
 			<t>The "whoami.vcf" segment has been registered in
 			the "Well-Known URI Registry" (see <xref
-			target="RFC5785">RFC 5785</xref>).</t>
+			target="RFC5785"/>).</t>
 		</section>
 
 		<section title="Handling of Requests for WHOAMI Information">
@@ -188,13 +185,21 @@ tYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=</artwork>
 
 	</section>
 	<section anchor="Security" title="Security Considerations">
-		<t>TODO.</t>
+		<t><list style="bullets">
+			<t>TODO, but probably lots.</t>
+		</list></t>
 	</section>
 	<section anchor="Privacy" title="Privacy Considerations">
-		<t>TODO.</t>
+		<t><list style="bullets">
+			<t>TODO, but probably lots.</t>
+		</list></t>
 	</section>
 	<section anchor="IANA" title="IANA Considerations">
-		<t>TODO.</t>
+		<t>This specification registers the "whomi" well-known URI in the "Well-Known URIs" registry as defined by <xref target="RFC5785"/>.</t>
+		<t>URI suffix:  whoami</t>
+		<t>Change controller:  IETF</t>
+		<t>Specification document(s):  (this document)</t>
+		<t>Related information:  no remarks</t>
 	</section>
 </middle>
 
@@ -209,6 +214,7 @@ tYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=</artwork>
 	</references>
 	<references title="Informative References">
 		&RFC3912;
+		&RFC5731;
 		&RFC5733;
 		&RFC6749;
 		&RFC6973;
