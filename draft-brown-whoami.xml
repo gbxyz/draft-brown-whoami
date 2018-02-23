@@ -283,8 +283,21 @@ or <xref target="RFC6749">OAuth 2.0</xref>.</t>
 </references>
 
 <section title="Change History">
-<section title="Change from 00 to 01" anchor="change-00-to-01">
+
+<section title="Change from 01 to 02" anchor="change-00-to-01">
+
+<t>TODO</t>
+
 </section>
+
+<section title="Change from 00 to 01" anchor="change-00-to-01">
+<t><list style="numbers">
+
+<t>Fixed well-know URI registration, various typoos. Improved consistency of terminology.</t>
+
+</list></t>
+</section>
+
 </section>
 </back>
 
