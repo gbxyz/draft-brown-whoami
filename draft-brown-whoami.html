@@ -383,9 +383,17 @@
 <link href="#rfc.section.2.2" rel="Chapter" title="2.2 Well-Known URL">
 <link href="#rfc.section.3" rel="Chapter" title="3 Operational Considerations">
 <link href="#rfc.section.3.1" rel="Chapter" title="3.1 Domain Registries">
+<link href="#rfc.section.3.1.1" rel="Chapter" title="3.1.1 Registration Policies">
+<link href="#rfc.section.3.1.2" rel="Chapter" title="3.1.2 Monitoring and Enforcement">
+<link href="#rfc.section.3.1.3" rel="Chapter" title="3.1.3 Collection of WHOAMI Data">
 <link href="#rfc.section.3.2" rel="Chapter" title="3.2 Domain Registrants">
+<link href="#rfc.section.3.2.1" rel="Chapter" title="3.2.1 Monitoring WHOAMI Access Requests">
+<link href="#rfc.section.3.2.2" rel="Chapter" title="3.2.2 Requiring Authentication for WHOAMI Access Requests">
+<link href="#rfc.section.3.2.3" rel="Chapter" title="3.2.3 Delegation of WHOAMI to Third Parties">
 <link href="#rfc.section.3.3" rel="Chapter" title="3.3 Domain Operators">
+<link href="#rfc.section.3.3.1" rel="Chapter" title="3.3.1 WHOAMI as a Service">
 <link href="#rfc.section.3.4" rel="Chapter" title="3.4 WHOAMI Clients">
+<link href="#rfc.section.3.4.1" rel="Chapter" title="3.4.1 Obtaining WHOAMI information for suspended domains">
 <link href="#rfc.section.4" rel="Chapter" title="4 Security Considerations">
 <link href="#rfc.section.5" rel="Chapter" title="5 Privacy Considerations">
 <link href="#rfc.section.6" rel="Chapter" title="6 IANA Considerations">
@@ -393,7 +401,8 @@
 <link href="#rfc.references.1" rel="Chapter" title="7.1 Normative References">
 <link href="#rfc.references.2" rel="Chapter" title="7.2 Informative References">
 <link href="#rfc.appendix.A" rel="Chapter" title="A Change History">
-<link href="#rfc.appendix.A.1" rel="Chapter" title="A.1 Change from 00 to 01">
+<link href="#rfc.appendix.A.1" rel="Chapter" title="A.1 Change from 01 to 02">
+<link href="#rfc.appendix.A.2" rel="Chapter" title="A.2 Change from 00 to 01">
 <link href="#rfc.authors" rel="Chapter">
 
 
@@ -402,7 +411,7 @@
 
   <meta name="dct.creator" content="Brown, G." />
   <meta name="dct.identifier" content="urn:ietf:id:draft-brown-whoami-01" />
-  <meta name="dct.issued" scheme="ISO8601" content="2018-2-23" />
+  <meta name="dct.issued" scheme="ISO8601" content="2018-2-27" />
   <meta name="dct.abstract" content="This document proposes a decentralised alternative	to traditional WHOIS directories." />
   <meta name="description" content="This document proposes a decentralised alternative	to traditional WHOIS directories." />
 
@@ -423,10 +432,10 @@
 </tr>
 <tr>
 <td class="left">Intended status: Experimental</td>
-<td class="right">February 23, 2018</td>
+<td class="right">February 27, 2018</td>
 </tr>
 <tr>
-<td class="left">Expires: August 27, 2018</td>
+<td class="left">Expires: August 31, 2018</td>
 <td class="right"></td>
 </tr>
 
@@ -443,7 +452,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on August 27, 2018.</p>
+<p>This Internet-Draft will expire on August 31, 2018.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -471,13 +480,29 @@
 </li>
 <ul><li>3.1.   <a href="#rfc.section.3.1">Domain Registries</a>
 </li>
-<li>3.2.   <a href="#rfc.section.3.2">Domain Registrants</a>
+<ul><li>3.1.1.   <a href="#rfc.section.3.1.1">Registration Policies</a>
 </li>
-<li>3.3.   <a href="#rfc.section.3.3">Domain Operators</a>
+<li>3.1.2.   <a href="#rfc.section.3.1.2">Monitoring and Enforcement</a>
 </li>
-<li>3.4.   <a href="#rfc.section.3.4">WHOAMI Clients</a>
+<li>3.1.3.   <a href="#rfc.section.3.1.3">Collection of WHOAMI Data</a>
 </li>
-</ul><li>4.   <a href="#rfc.section.4">Security Considerations</a>
+</ul><li>3.2.   <a href="#rfc.section.3.2">Domain Registrants</a>
+</li>
+<ul><li>3.2.1.   <a href="#rfc.section.3.2.1">Monitoring WHOAMI Access Requests</a>
+</li>
+<li>3.2.2.   <a href="#rfc.section.3.2.2">Requiring Authentication for WHOAMI Access Requests</a>
+</li>
+<li>3.2.3.   <a href="#rfc.section.3.2.3">Delegation of WHOAMI to Third Parties</a>
+</li>
+</ul><li>3.3.   <a href="#rfc.section.3.3">Domain Operators</a>
+</li>
+<ul><li>3.3.1.   <a href="#rfc.section.3.3.1">WHOAMI as a Service</a>
+</li>
+</ul><li>3.4.   <a href="#rfc.section.3.4">WHOAMI Clients</a>
+</li>
+<ul><li>3.4.1.   <a href="#rfc.section.3.4.1">Obtaining WHOAMI information for suspended domains</a>
+</li>
+</ul></ul><li>4.   <a href="#rfc.section.4">Security Considerations</a>
 </li>
 <li>5.   <a href="#rfc.section.5">Privacy Considerations</a>
 </li>
@@ -491,7 +516,9 @@
 </li>
 </ul><li>Appendix A.   <a href="#rfc.appendix.A">Change History</a>
 </li>
-<ul><li>A.1.   <a href="#rfc.appendix.A.1">Change from 00 to 01</a>
+<ul><li>A.1.   <a href="#rfc.appendix.A.1">Change from 01 to 02</a>
+</li>
+<li>A.2.   <a href="#rfc.appendix.A.2">Change from 00 to 01</a>
 </li>
 </ul><li><a href="#rfc.authors">Author's Address</a>
 </li>
@@ -564,17 +591,28 @@ BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
 <a href="#rfc.section.3">3.</a> Operational Considerations</h1>
 <h1 id="rfc.section.3.1">
 <a href="#rfc.section.3.1">3.1.</a> Domain Registries</h1>
-<p id="rfc.section.3.1.p.1">TODO</p>
+<h1 id="rfc.section.3.1.1">
+<a href="#rfc.section.3.1.1">3.1.1.</a> Registration Policies</h1>
+<h1 id="rfc.section.3.1.2">
+<a href="#rfc.section.3.1.2">3.1.2.</a> Monitoring and Enforcement</h1>
+<h1 id="rfc.section.3.1.3">
+<a href="#rfc.section.3.1.3">3.1.3.</a> Collection of WHOAMI Data</h1>
 <h1 id="rfc.section.3.2">
 <a href="#rfc.section.3.2">3.2.</a> Domain Registrants</h1>
-<p id="rfc.section.3.2.p.1">TODO</p>
-<p id="rfc.section.3.2.p.2">Domain Operators MAY configure the HTTP server which hosts their WHOAMI record to restrict access to this information (based some form of authentication such as <a href="#RFC7617" class="xref">HTTP Basic Authentication</a> or <a href="#RFC6749" class="xref">OAuth 2.0</a>.</p>
+<h1 id="rfc.section.3.2.1">
+<a href="#rfc.section.3.2.1">3.2.1.</a> Monitoring WHOAMI Access Requests</h1>
+<h1 id="rfc.section.3.2.2">
+<a href="#rfc.section.3.2.2">3.2.2.</a> Requiring Authentication for WHOAMI Access Requests</h1>
+<h1 id="rfc.section.3.2.3">
+<a href="#rfc.section.3.2.3">3.2.3.</a> Delegation of WHOAMI to Third Parties</h1>
 <h1 id="rfc.section.3.3">
 <a href="#rfc.section.3.3">3.3.</a> Domain Operators</h1>
-<p id="rfc.section.3.3.p.1">TODO</p>
+<h1 id="rfc.section.3.3.1">
+<a href="#rfc.section.3.3.1">3.3.1.</a> WHOAMI as a Service</h1>
 <h1 id="rfc.section.3.4">
 <a href="#rfc.section.3.4">3.4.</a> WHOAMI Clients</h1>
-<p id="rfc.section.3.4.p.1">TODO</p>
+<h1 id="rfc.section.3.4.1">
+<a href="#rfc.section.3.4.1">3.4.1.</a> Obtaining WHOAMI information for suspended domains</h1>
 <h1 id="rfc.section.4">
 <a href="#rfc.section.4">4.</a> <a href="#Security" id="Security">Security Considerations</a>
 </h1>
@@ -683,8 +721,15 @@ BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
 <h1 id="rfc.appendix.A">
 <a href="#rfc.appendix.A">Appendix A.</a> Change History</h1>
 <h1 id="rfc.appendix.A.1">
-<a href="#rfc.appendix.A.1">A.1.</a> <a href="#change-00-to-01" id="change-00-to-01">Change from 00 to 01</a>
+<a href="#rfc.appendix.A.1">A.1.</a> <a href="#change-01-to-02" id="change-01-to-02">Change from 01 to 02</a>
 </h1>
+<p id="rfc.section.A.1.p.1">TODO</p>
+<h1 id="rfc.appendix.A.2">
+<a href="#rfc.appendix.A.2">A.2.</a> <a href="#change-00-to-01" id="change-00-to-01">Change from 00 to 01</a>
+</h1>
+<p></p>
+
+<ol><li>Fixed well-know URI registration, various typoos. Improved consistency of terminology.</li></ol>
 <h1 id="rfc.authors"><a href="#rfc.authors">Author's Address</a></h1>
 <div class="avoidbreak">
   <address class="vcard">

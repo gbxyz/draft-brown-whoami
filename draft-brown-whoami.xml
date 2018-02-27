@@ -216,26 +216,45 @@ MUST be "text/vcard".</t>
 </section>
 
 <section title="Operational Considerations">
+
 <section title="Domain Registries">
-<t>TODO</t>
+
+<section title="Registration Policies">
+</section>
+
+<section title="Monitoring and Enforcement">
+</section>
+
+<section title="Collection of WHOAMI Data">
+</section>
+
 </section>
 
 <section title="Domain Registrants">
-<t>TODO</t>
 
-<t>Domain Operators MAY configure the HTTP server
-which hosts their WHOAMI record to restrict access
-to this information (based some form of authentication
-such as <xref target="RFC7617">HTTP Basic Authentication</xref>
-or <xref target="RFC6749">OAuth 2.0</xref>.</t>
+<section title="Monitoring WHOAMI Access Requests">
+</section>
+
+<section title="Requiring Authentication for WHOAMI Access Requests">
+</section>
+
+<section title="Delegation of WHOAMI to Third Parties">
+</section>
+
 </section>
 
 <section title="Domain Operators">
-<t>TODO</t>
+
+<section title="WHOAMI as a Service">
+</section>
+
 </section>
 
 <section title="WHOAMI Clients">
-<t>TODO</t>
+
+<section title="Obtaining WHOAMI information for suspended domains">
+</section>
+
 </section>
 </section>
 
@@ -284,7 +303,7 @@ or <xref target="RFC6749">OAuth 2.0</xref>.</t>
 
 <section title="Change History">
 
-<section title="Change from 01 to 02" anchor="change-00-to-01">
+<section title="Change from 01 to 02" anchor="change-01-to-02">
 
 <t>TODO</t>
 

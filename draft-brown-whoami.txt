@@ -4,8 +4,8 @@
 
 Internet Engineering Task Force                                 G. Brown
 Internet-Draft                                      CentralNic Group plc
-Intended status: Experimental                          February 23, 2018
-Expires: August 27, 2018
+Intended status: Experimental                          February 27, 2018
+Expires: August 31, 2018
 
 
  A Method For Identifying a Domain Operator's Point of Contact (WHOAMI)
@@ -31,7 +31,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 27, 2018.
+   This Internet-Draft will expire on August 31, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Brown                    Expires August 27, 2018                [Page 1]
+Brown                    Expires August 31, 2018                [Page 1]
 
 Internet-Draft                Domain WHOAMI                February 2018
 
@@ -66,20 +66,29 @@ Table of Contents
    2.  WHOAMI Protocol . . . . . . . . . . . . . . . . . . . . . . .   4
      2.1.  URI Record  . . . . . . . . . . . . . . . . . . . . . . .   4
        2.1.1.  URI Record with a data: scheme  . . . . . . . . . . .   4
-     2.2.  Well-Known URL  . . . . . . . . . . . . . . . . . . . . .   4
+     2.2.  Well-Known URL  . . . . . . . . . . . . . . . . . . . . .   5
    3.  Operational Considerations  . . . . . . . . . . . . . . . . .   5
      3.1.  Domain Registries . . . . . . . . . . . . . . . . . . . .   5
+       3.1.1.  Registration Policies . . . . . . . . . . . . . . . .   5
+       3.1.2.  Monitoring and Enforcement  . . . . . . . . . . . . .   5
+       3.1.3.  Collection of WHOAMI Data . . . . . . . . . . . . . .   5
      3.2.  Domain Registrants  . . . . . . . . . . . . . . . . . . .   5
+       3.2.1.  Monitoring WHOAMI Access Requests . . . . . . . . . .   5
+       3.2.2.  Requiring Authentication for WHOAMI Access Requests .   5
+       3.2.3.  Delegation of WHOAMI to Third Parties . . . . . . . .   5
      3.3.  Domain Operators  . . . . . . . . . . . . . . . . . . . .   5
-     3.4.  WHOAMI Clients  . . . . . . . . . . . . . . . . . . . . .   5
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
-   5.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .   5
+       3.3.1.  WHOAMI as a Service . . . . . . . . . . . . . . . . .   5
+     3.4.  WHOAMI Clients  . . . . . . . . . . . . . . . . . . . . .   6
+       3.4.1.  Obtaining WHOAMI information for suspended domains  .   6
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
+   5.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .   6
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .   6
      7.2.  Informative References  . . . . . . . . . . . . . . . . .   7
-   Appendix A.  Change History . . . . . . . . . . . . . . . . . . .   7
-     A.1.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .   8
+   Appendix A.  Change History . . . . . . . . . . . . . . . . . . .   8
+     A.1.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .   8
+     A.2.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .   8
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   8
 
 1.  Introduction
@@ -97,6 +106,14 @@ Table of Contents
    for further discussion) - and then make this data available, with few
    restrictions, to anyone who might want it, for reasons both benign
    and malign.  This is especially the case for generic Top-Level Domain
+
+
+
+Brown                    Expires August 31, 2018                [Page 2]
+
+Internet-Draft                Domain WHOAMI                February 2018
+
+
    Registries, who are subject to policy obligations which, as of
    writing, require a uniform data model for Registration Data
    (Section 1.2), and do not permit differentiated access to this data.
@@ -105,15 +122,6 @@ Table of Contents
    WHOIS directories.  To avoid the need for Domain Registries to
    collect Registration Data, it provides a means by which Domain
    Operators (Section 1.2) may, at their own discretion (or in
-
-
-
-
-Brown                    Expires August 27, 2018                [Page 2]
-
-Internet-Draft                Domain WHOAMI                February 2018
-
-
    compliance with a Domain Registry's policy requirements), publish
    their contact information in a machine-readable manner.
 
@@ -155,20 +163,19 @@ Internet-Draft                Domain WHOAMI                February 2018
       Operator and/or other entities responsible for the administration
       of a Domain.
 
+
+
+Brown                    Expires August 31, 2018                [Page 3]
+
+Internet-Draft                Domain WHOAMI                February 2018
+
+
    Point of Contact (PoC):  Contact information, including Contact Name,
       Organisation Name, Postal Addres, email, voice and fax numbers,
       for a single entity (which may be a natural person or legal
       entity).
 
    WHOAMI Record:  A Point of Contact in vCard [RFC6350] format.
-
-
-
-
-Brown                    Expires August 27, 2018                [Page 3]
-
-Internet-Draft                Domain WHOAMI                February 2018
-
 
 2.  WHOAMI Protocol
 
@@ -210,6 +217,15 @@ Internet-Draft                Domain WHOAMI                February 2018
    BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
    0NzI3LTg4MDMtYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=
 
+
+
+
+
+Brown                    Expires August 31, 2018                [Page 4]
+
+Internet-Draft                Domain WHOAMI                February 2018
+
+
    If a "data:" scheme is used, the MIME type of the data MUST be "text/
    vcard".
 
@@ -217,14 +233,6 @@ Internet-Draft                Domain WHOAMI                February 2018
 
    Domain Operators MAY publish their WHOAMI record at the following
    URL:
-
-
-
-
-Brown                    Expires August 27, 2018                [Page 4]
-
-Internet-Draft                Domain WHOAMI                February 2018
-
 
    http://example.com/.well-known/whoami/whoami.vcf
 
@@ -244,24 +252,39 @@ Internet-Draft                Domain WHOAMI                February 2018
 
 3.1.  Domain Registries
 
-   TODO
+3.1.1.  Registration Policies
+
+3.1.2.  Monitoring and Enforcement
+
+3.1.3.  Collection of WHOAMI Data
 
 3.2.  Domain Registrants
 
-   TODO
+3.2.1.  Monitoring WHOAMI Access Requests
 
-   Domain Operators MAY configure the HTTP server which hosts their
-   WHOAMI record to restrict access to this information (based some form
-   of authentication such as HTTP Basic Authentication [RFC7617] or
-   OAuth 2.0 [RFC6749].
+3.2.2.  Requiring Authentication for WHOAMI Access Requests
+
+3.2.3.  Delegation of WHOAMI to Third Parties
 
 3.3.  Domain Operators
 
-   TODO
+3.3.1.  WHOAMI as a Service
+
+
+
+
+
+
+
+
+Brown                    Expires August 31, 2018                [Page 5]
+
+Internet-Draft                Domain WHOAMI                February 2018
+
 
 3.4.  WHOAMI Clients
 
-   TODO
+3.4.1.  Obtaining WHOAMI information for suspended domains
 
 4.  Security Considerations
 
@@ -270,17 +293,6 @@ Internet-Draft                Domain WHOAMI                February 2018
 5.  Privacy Considerations
 
       TODO, but probably lots.
-
-
-
-
-
-
-
-Brown                    Expires August 27, 2018                [Page 5]
-
-Internet-Draft                Domain WHOAMI                February 2018
-
 
 6.  IANA Considerations
 
@@ -317,6 +329,15 @@ Internet-Draft                Domain WHOAMI                February 2018
               DOI 10.17487/RFC5785, April 2010,
               <https://www.rfc-editor.org/info/rfc5785>.
 
+
+
+
+
+Brown                    Expires August 31, 2018                [Page 6]
+
+Internet-Draft                Domain WHOAMI                February 2018
+
+
    [RFC6335]  Cotton, M., Eggert, L., Touch, J., Westerlund, M., and S.
               Cheshire, "Internet Assigned Numbers Authority (IANA)
               Procedures for the Management of the Service Name and
@@ -327,16 +348,6 @@ Internet-Draft                Domain WHOAMI                February 2018
    [RFC6350]  Perreault, S., "vCard Format Specification", RFC 6350,
               DOI 10.17487/RFC6350, August 2011,
               <https://www.rfc-editor.org/info/rfc6350>.
-
-
-
-
-
-
-Brown                    Expires August 27, 2018                [Page 6]
-
-Internet-Draft                Domain WHOAMI                February 2018
-
 
    [RFC7553]  Faltstrom, P. and O. Kolkman, "The Uniform Resource
               Identifier (URI) DNS Resource Record", RFC 7553,
@@ -373,6 +384,16 @@ Internet-Draft                Domain WHOAMI                February 2018
               DOI 10.17487/RFC7480, March 2015,
               <https://www.rfc-editor.org/info/rfc7480>.
 
+
+
+
+
+
+Brown                    Expires August 31, 2018                [Page 7]
+
+Internet-Draft                Domain WHOAMI                February 2018
+
+
    [RFC7617]  Reschke, J., "The 'Basic' HTTP Authentication Scheme",
               RFC 7617, DOI 10.17487/RFC7617, September 2015,
               <https://www.rfc-editor.org/info/rfc7617>.
@@ -383,18 +404,14 @@ Internet-Draft                Domain WHOAMI                February 2018
 
 Appendix A.  Change History
 
+A.1.  Change from 01 to 02
 
+   TODO
 
+A.2.  Change from 00 to 01
 
-
-
-
-Brown                    Expires August 27, 2018                [Page 7]
-
-Internet-Draft                Domain WHOAMI                February 2018
-
-
-A.1.  Change from 00 to 01
+   1.  Fixed well-know URI registration, various typoos.  Improved
+       consistency of terminology.
 
 Author's Address
 
@@ -428,21 +445,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Brown                    Expires August 27, 2018                [Page 8]
+Brown                    Expires August 31, 2018                [Page 8]
