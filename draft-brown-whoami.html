@@ -398,8 +398,8 @@
   <meta name="dct.creator" content="Brown, G." />
   <meta name="dct.identifier" content="urn:ietf:id:draft-brown-whoami-02" />
   <meta name="dct.issued" scheme="ISO8601" content="2018-5-23" />
-  <meta name="dct.abstract" content="This document proposes a method by which the owner or operator of a domain may publish their contact information in a discoverable and machine-readable format." />
-  <meta name="description" content="This document proposes a method by which the owner or operator of a domain may publish their contact information in a discoverable and machine-readable format." />
+  <meta name="dct.abstract" content="This document proposes a method by which the operator of a domain may publish their contact information in a discoverable and machine-readable format." />
+  <meta name="description" content="This document proposes a method by which the operator of a domain may publish their contact information in a discoverable and machine-readable format." />
 
 </head>
 
@@ -433,7 +433,7 @@
   <span class="filename">draft-brown-whoami-02</span></p>
   
   <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
-<p>This document proposes a method by which the owner or operator of a domain may publish their contact information in a discoverable and machine-readable format.</p>
+<p>This document proposes a method by which the operator of a domain may publish their contact information in a discoverable and machine-readable format.</p>
 <h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
@@ -486,8 +486,8 @@
 
   <h1 id="rfc.section.1">
 <a href="#rfc.section.1">1.</a> Introduction</h1>
-<p id="rfc.section.1.p.1">This document specifies a protocol which provides a way for the owner or operator of a domain name to publish their contact information in a discoverable and machine-readable format.</p>
-<p id="rfc.section.1.p.2">It serves as a complementary service to WHOIS (<a href="#RFC3912" class="xref">[RFC3912]</a>) and RDAP (<a href="#RFC7480" class="xref">[RFC7480]</a>), and differs in that it relies on self-publication by the domain owner or operator, rather than a centralised third party service.</p>
+<p id="rfc.section.1.p.1">This document specifies a protocol which provides a way for the operator of a domain name to publish their contact information in a discoverable and machine-readable format.</p>
+<p id="rfc.section.1.p.2">It serves as a complementary service to WHOIS (<a href="#RFC3912" class="xref">[RFC3912]</a>) and RDAP (<a href="#RFC7480" class="xref">[RFC7480]</a>), and differs in that it relies on self-publication by the domain operator, rather than a centralised third party service.</p>
 <h1 id="rfc.section.1.1">
 <a href="#rfc.section.1.1">1.1.</a> Conventions Used in This Document</h1>
 <p id="rfc.section.1.1.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC2119" class="xref">[RFC2119]</a>.</p>
@@ -524,11 +524,13 @@ BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
 <h1 id="rfc.section.3">
 <a href="#rfc.section.3">3.</a> <a href="#Security" id="Security">Security Considerations</a>
 </h1>
-<p id="rfc.section.3.p.1">TODO</p>
+<p id="rfc.section.3.p.1">WHOAMI provides no security capabilities above and beyond those provided by the underlying protocols it uses, namely DNS and HTTP.</p>
+<p id="rfc.section.3.p.2">WHOAMI records in general will not be confidential: while HTTPS provides transport-layer security, unless some form of authentication is used, WHOAMI records will be freely available to anyone who requests them.</p>
+<p id="rfc.section.3.p.3">The integrity of WHOAMI records served over DNS may be verified using DNSSEC validation. The use of TLS ensures that records served over HTTPS have not been modified in-transit.</p>
 <h1 id="rfc.section.4">
 <a href="#rfc.section.4">4.</a> <a href="#Privacy" id="Privacy">Privacy Considerations</a>
 </h1>
-<p id="rfc.section.4.p.1">TODO</p>
+<p id="rfc.section.4.p.1">Since WHOAMI records are not private, the information included in a WHOAMI record is exposed to the public. Domain owners should therefore exercise caution when entering information into their WHOAMI record. For example, rather than publishing the contact informations of people, role-based contact information SHOULD be used instead.</p>
 <h1 id="rfc.section.5">
 <a href="#rfc.section.5">5.</a> <a href="#IANA" id="IANA">IANA Considerations</a>
 </h1>

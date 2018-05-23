@@ -20,9 +20,13 @@
 <?rfc subcompact="no" ?>
 <?rfc comments="yes" ?>
 <?rfc inline="yes" ?>
-<rfc category="exp" docName="draft-brown-whoami-02" ipr="trust200902" submissionType="independent">
+
+<rfc category="exp" docName="draft-brown-whoami-02" ipr="trust200902"
+  submissionType="independent">
+
   <front>
-    <title abbrev="WHOAMI">WHOAMI: A Method For Identifying a Domain Operator's Contact Information</title>
+    <title abbrev="WHOAMI">WHOAMI: A Method For Identifying a Domain
+    Operator's Contact Information</title>
     <author fullname="Gavin Brown" initials="G" surname="Brown">
       <organization>CentralNic Group plc</organization>
       <address>
@@ -42,31 +46,39 @@
     <area>Applications</area>
     <workgroup>Internet Engineering Task Force</workgroup>
 
-    <abstract><t>This document proposes a method by which the owner or operator of a domain may publish their contact information in a discoverable and machine-readable format.</t></abstract>
+    <abstract><t>This document proposes a method by which the operator
+    of a domain may publish their contact information in a discoverable
+    and machine-readable format.</t></abstract>
   </front>
 
   <middle>
     <section title="Introduction">
 
-      <t>This document specifies a protocol which provides a way for the owner or operator of a domain name to publish their contact information in a discoverable and machine-readable format.</t>
+      <t>This document specifies a protocol which provides a way for the
+      operator of a domain name to publish their contact information in
+      a discoverable and machine-readable format.</t>
 
-      <t>It serves as a complementary service to WHOIS (<xref target="RFC3912"/>) and RDAP (<xref target="RFC7480"/>), and differs in that it relies on self-publication by the domain owner or operator, rather than a centralised third party service.</t>
+      <t>It serves as a complementary service to WHOIS (<xref
+      target="RFC3912"/>) and RDAP (<xref target="RFC7480"/>), and
+      differs in that it relies on self-publication by the domain
+      operator, rather than a centralised third party service.</t>
 
       <section title="Conventions Used in This Document">
-        <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-        "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL"
-        in this document are to be interpreted as described in <xref
-        target="RFC2119"/>.</t>
+        <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+        NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and
+        "OPTIONAL" in this document are to be interpreted as described
+        in <xref target="RFC2119"/>.</t>
       </section>
 
     </section>
 
     <section title="WHOAMI Protocol">
       <t>Domain Operators MAY publish a WHOAMI Record
-      in conformance with this specification. It may be published (a) at a URL indicated by a <xref
-      target="RFC7553">URI record</xref> published in the DNS (as
-      described in <xref target="dnsuri"/>), or (b) at a well-known URL (as described in
-      <xref target="wellknown"/>).</t>
+      in conformance with this specification. It may be published (a) at
+      a URL indicated by a <xref target="RFC7553">URI record</xref>
+      published in the DNS (as described in <xref target="dnsuri"/>), or
+      (b) at a well-known URL (as described in <xref
+      target="wellknown"/>).</t>
 
       <t>Software which consumes WHOAMI records
       SHOULD first perform a DNS query for the URI record for a
@@ -89,7 +101,8 @@ _nicname._tcp IN URI 10 1 https://example.com/whoami/whoami.vcf</artwork>
         as per Section 4.1 of <xref target="RFC7553"/>, with
         the "_nicname" tag being derived from the "Who Is
         Protocol" entry in the "Service  Name and Transport
-        Protocol Port Number Registry (see <xref target="RFC6335"/>).</t>
+        Protocol Port Number Registry (see <xref
+        target="RFC6335"/>).</t>
 
         <section title="URI Record with a data: scheme">
           <t>Domain Operators MAY publish a record with a
@@ -112,42 +125,57 @@ BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
       </section>
 
       <section anchor="wellknown" title="Well-Known URL">
-        <t>Domain Operators MAY publish their WHOAMI record at the following URL:</t>
+        <t>Domain Operators MAY publish their WHOAMI record at the
+        following URL:</t>
 
         <figure>
         <artwork>http://example.com/.well-known/whoami/whoami.vcf</artwork>
         </figure>
 
-        <t>The "whoami" path segment has been registered in
-        the "Well-Known URI Registry" (see <xref
-        target="RFC5785"/>).</t>
+        <t>The "whoami" path segment has been registered in the
+        "Well-Known URI Registry" (see <xref target="RFC5785"/>).</t>
 
-        <t>It is RECOMMENDED that web servers which support
-        HTTP over Transport Layer Security (TLS,
-        <xref target="RFC2818"/>) provide a 3xx redirect to
-        the HTTPS version of this URL.</t>
+        <t>It is RECOMMENDED that web servers which support HTTP over
+        Transport Layer Security (TLS, <xref target="RFC2818"/>) provide
+        a 3xx redirect to the HTTPS version of this URL.</t>
 
-        <t>Software which consumes WHOAMI records
-        MUST follow 3xx redirections return in server
-        responses.</t>
+        <t>Software which consumes WHOAMI records MUST follow 3xx
+        redirections return in server responses.</t>
 
-        <t>The Content-Type header of the server response
-        MUST be "text/vcard".</t>
+        <t>The Content-Type header of the server response MUST be
+        "text/vcard".</t>
       </section>
 
     </section>
 
     <section anchor="Security" title="Security Considerations">
-      <t>TODO</t>
+      <t>WHOAMI provides no security capabilities above and beyond those
+      provided by the underlying protocols it uses, namely DNS and
+      HTTP.</t>
+
+      <t>WHOAMI records in general will not be confidential: while HTTPS
+      provides transport-layer security, unless some form of
+      authentication is used, WHOAMI records will be freely available to
+      anyone who requests them.</t>
+
+      <t>The integrity of WHOAMI records served over DNS may be verified
+      using DNSSEC validation. The use of TLS ensures that records
+      served over HTTPS have not been modified in-transit.</t>
     </section>
 
     <section anchor="Privacy" title="Privacy Considerations">
-      <t>TODO</t>
+      <t>Since WHOAMI records are not private, the information included
+      in a WHOAMI record is exposed to the public. Domain owners should
+      therefore exercise caution when entering information into their
+      WHOAMI record. For example, rather than publishing the contact
+      informations of people, role-based contact information SHOULD be
+      used instead.</t>
     </section>
 
     <section anchor="IANA" title="IANA Considerations">
       <t>This specification registers the "whoami" well-known URI in the
-      "Well-Known URIs" registry as defined by <xref target="RFC5785"/>.</t>
+      "Well-Known URIs" registry as defined by <xref
+      target="RFC5785"/>.</t>
       <t>URI suffix:  whoami</t>
       <t>Change controller:  IETF</t>
       <t>Specification document(s):  (this document)</t>
@@ -156,6 +184,7 @@ BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
   </middle>
 
   <back>
+
     <references title="Normative References">
     &RFC2119;
     &RFC2397;
@@ -164,13 +193,13 @@ BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
     &RFC6335;
     &RFC7553;
     </references>
+
     <references title="Informative References">
     &RFC3912;
     &RFC7480;
     </references>
 
     <section title="Change History">
-
       <section title="Change from 01 to 02" anchor="change-01-to-02">
         <t><list style="numbers">
           <t>Removed all the layer-9 stuff.</t>
@@ -179,10 +208,11 @@ BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
 
       <section title="Change from 00 to 01" anchor="change-00-to-01">
         <t><list style="numbers">
-          <t>Fixed well-known URI registration, various typos. Improved consistency of terminology.</t>
+          <t>Fixed well-known URI registration, various typos. Improved
+          consistency of terminology.</t>
         </list></t>
       </section>
-
     </section>
+
   </back>
 </rfc>

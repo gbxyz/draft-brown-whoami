@@ -13,9 +13,9 @@ WHOAMI: A Method For Identifying a Domain Operator's Contact Information
 
 Abstract
 
-   This document proposes a method by which the owner or operator of a
-   domain may publish their contact information in a discoverable and
-   machine-readable format.
+   This document proposes a method by which the operator of a domain may
+   publish their contact information in a discoverable and machine-
+   readable format.
 
 Status of This Memo
 
@@ -75,18 +75,17 @@ Table of Contents
    Appendix A.  Change History . . . . . . . . . . . . . . . . . . .   5
      A.1.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .   5
      A.2.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .   5
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   5
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Introduction
 
-   This document specifies a protocol which provides a way for the owner
-   or operator of a domain name to publish their contact information in
-   a discoverable and machine-readable format.
+   This document specifies a protocol which provides a way for the
+   operator of a domain name to publish their contact information in a
+   discoverable and machine-readable format.
 
    It serves as a complementary service to WHOIS ([RFC3912]) and RDAP
    ([RFC7480]), and differs in that it relies on self-publication by the
-   domain owner or operator, rather than a centralised third party
-   service.
+   domain operator, rather than a centralised third party service.
 
 1.1.  Conventions Used in This Document
 
@@ -104,6 +103,7 @@ Table of Contents
    Software which consumes WHOAMI records SHOULD first perform a DNS
    query for the URI record for a Domain, falling back to the well-known
    URL if the query does not return a positive result.
+
 
 
 
@@ -174,11 +174,26 @@ Internet-Draft                   WHOAMI                         May 2018
 
 3.  Security Considerations
 
-   TODO
+   WHOAMI provides no security capabilities above and beyond those
+   provided by the underlying protocols it uses, namely DNS and HTTP.
+
+   WHOAMI records in general will not be confidential: while HTTPS
+   provides transport-layer security, unless some form of authentication
+   is used, WHOAMI records will be freely available to anyone who
+   requests them.
+
+   The integrity of WHOAMI records served over DNS may be verified using
+   DNSSEC validation.  The use of TLS ensures that records served over
+   HTTPS have not been modified in-transit.
 
 4.  Privacy Considerations
 
-   TODO
+   Since WHOAMI records are not private, the information included in a
+   WHOAMI record is exposed to the public.  Domain owners should
+   therefore exercise caution when entering information into their
+   WHOAMI record.  For example, rather than publishing the contact
+   informations of people, role-based contact information SHOULD be used
+   instead.
 
 5.  IANA Considerations
 
@@ -202,6 +217,15 @@ Internet-Draft                   WHOAMI                         May 2018
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
+
+
+
+
+Brown                   Expires November 24, 2018               [Page 4]
+
+Internet-Draft                   WHOAMI                         May 2018
+
+
    [RFC2397]  Masinter, L., "The "data" URL scheme", RFC 2397,
               DOI 10.17487/RFC2397, August 1998,
               <https://www.rfc-editor.org/info/rfc2397>.
@@ -214,17 +238,6 @@ Internet-Draft                   WHOAMI                         May 2018
               Uniform Resource Identifiers (URIs)", RFC 5785,
               DOI 10.17487/RFC5785, April 2010,
               <https://www.rfc-editor.org/info/rfc5785>.
-
-
-
-
-
-
-
-Brown                   Expires November 24, 2018               [Page 4]
-
-Internet-Draft                   WHOAMI                         May 2018
-
 
    [RFC6335]  Cotton, M., Eggert, L., Touch, J., Westerlund, M., and S.
               Cheshire, "Internet Assigned Numbers Authority (IANA)
@@ -260,6 +273,15 @@ A.2.  Change from 00 to 01
    1.  Fixed well-known URI registration, various typos.  Improved
        consistency of terminology.
 
+
+
+
+
+Brown                   Expires November 24, 2018               [Page 5]
+
+Internet-Draft                   WHOAMI                         May 2018
+
+
 Author's Address
 
    Gavin Brown
@@ -277,4 +299,38 @@ Author's Address
 
 
 
-Brown                   Expires November 24, 2018               [Page 5]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Brown                   Expires November 24, 2018               [Page 6]
