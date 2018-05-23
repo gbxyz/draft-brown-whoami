@@ -494,7 +494,7 @@
 <h1 id="rfc.section.2">
 <a href="#rfc.section.2">2.</a> WHOAMI Protocol</h1>
 <p id="rfc.section.2.p.1">Domain Operators MAY publish a WHOAMI Record in conformance with this specification. It may be published (a) at a URL indicated by a <a href="#RFC7553" class="xref">URI record</a> published in the DNS (as described in <a href="#dnsuri" class="xref">Section 2.1</a>), or (b) at a well-known URL (as described in <a href="#wellknown" class="xref">Section 2.2</a>).</p>
-<p id="rfc.section.2.p.2">Software which consumes WHOAMI records SHOULD first perform a DNS query for the URI record for a Domain, falling back to the well-known URL if the query does not return a positive result.</p>
+<p id="rfc.section.2.p.2">Software which consumes WHOAMI records SHOULD first perform a DNS query for the URI record for a domain, falling back to the well-known URL if the query does not return a positive result.</p>
 <h1 id="rfc.section.2.1">
 <a href="#rfc.section.2.1">2.1.</a> <a href="#dnsuri" id="dnsuri">URI Record</a>
 </h1>
@@ -502,10 +502,10 @@
 <pre>$ORIGIN example.com.
 _nicname._tcp IN URI 10 1 https://example.com/whoami/whoami.vcf</pre>
 <p id="rfc.section.2.1.p.2">Note: the Owner Name, Priority, Weight, and Target in the above record are illustrative only.</p>
-<p id="rfc.section.2.1.p.3">The Service Tag of the URI record is constructed as per Section 4.1 of <a href="#RFC7553" class="xref">[RFC7553]</a>, with the "_nicname" tag being derived from the "Who Is Protocol" entry in the "Service  Name and Transport Protocol Port Number Registry (see <a href="#RFC6335" class="xref">[RFC6335]</a>).</p>
+<p id="rfc.section.2.1.p.3">The Service Tag of the URI record is constructed as per Section 4.1 of <a href="#RFC7553" class="xref">[RFC7553]</a>, with the "_nicname" tag being derived from the "Who Is Protocol" entry in the "Service Name and Transport Protocol Port Number Registry (see <a href="#RFC6335" class="xref">[RFC6335]</a>).</p>
 <h1 id="rfc.section.2.1.1">
 <a href="#rfc.section.2.1.1">2.1.1.</a> URI Record with a data: scheme</h1>
-<p id="rfc.section.2.1.1.p.1">Domain Operators MAY publish a record with a "data:" scheme (<a href="#RFC2397" class="xref">[RFC2397]</a>).  This allows the WHOAMI record to be embedded in the URI record itself. An example of such a URI is below:</p>
+<p id="rfc.section.2.1.1.p.1">Domain Operators MAY publish a record with a "data:" scheme (<a href="#RFC2397" class="xref">[RFC2397]</a>). This allows the WHOAMI record to be embedded in the URI record itself. An example of such a URI is below:</p>
 <pre>data:text/vcard;charset=utf-8;base64,QkVHSU46VkNBUkQNClZFUlNJT046NC4w
 DQpVSUQ6dXJuOnV1aWQ6NGZiZTg5NzEtMGJjMy00MjRjLTljMjYtMzZjM2UxZWZmNmIxD
 QpGTjtQSUQ9MS4xOkouIERvZQ0KTjpEb2U7Si47OzsNCkVNQUlMO1BJRD0xLjE6amRvZU

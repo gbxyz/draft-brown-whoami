@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd"
 [
-<!ENTITY RFC2119 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
-<!ENTITY RFC2397 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2397.xml">
-<!ENTITY RFC2818 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2818.xml">
-<!ENTITY RFC3912 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3912.xml">
-<!ENTITY RFC5785 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5785.xml">
-<!ENTITY RFC6335 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6335.xml">
-<!ENTITY RFC7480 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7480.xml">
-<!ENTITY RFC7553 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7553.xml">
+
+<!ENTITY RFC2119 SYSTEM
+  "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
+
+<!ENTITY RFC2397 SYSTEM
+  "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2397.xml">
+
+<!ENTITY RFC2818 SYSTEM
+  "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2818.xml">
+
+<!ENTITY RFC3912 SYSTEM
+  "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3912.xml">
+
+<!ENTITY RFC5785 SYSTEM
+  "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5785.xml">
+
+<!ENTITY RFC6335 SYSTEM
+  "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6335.xml">
+
+<!ENTITY RFC7480 SYSTEM
+  "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7480.xml">
+
+<!ENTITY RFC7553 SYSTEM
+  "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7553.xml">
+
 ]>
 <?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?>
 <?rfc strict="yes" ?>
@@ -80,35 +97,32 @@
       (b) at a well-known URL (as described in <xref
       target="wellknown"/>).</t>
 
-      <t>Software which consumes WHOAMI records
-      SHOULD first perform a DNS query for the URI record for a
-      Domain, falling back to the well-known URL if the query does not
-      return a positive result.</t>
+      <t>Software which consumes WHOAMI records SHOULD first perform a
+      DNS query for the URI record for a domain, falling back to the
+      well-known URL if the query does not return a positive result.</t>
 
       <section anchor="dnsuri" title="URI Record">
-        <t>Domain Operators MAY publish the URL of their
-        WHOAMI record as a URI record in the DNS. An example of
-        such a record is below:</t>
+        <t>Domain Operators MAY publish the URL of their WHOAMI record
+        as a URI record in the DNS. An example of such a record is
+        below:</t>
 
         <figure><artwork>$ORIGIN example.com.
 _nicname._tcp IN URI 10 1 https://example.com/whoami/whoami.vcf</artwork>
         </figure>
 
-        <t>Note: the Owner Name, Priority, Weight, and Target
-        in the above record are illustrative only.</t>
+        <t>Note: the Owner Name, Priority, Weight, and Target in the
+        above record are illustrative only.</t>
 
-        <t>The Service Tag of the URI record is constructed
-        as per Section 4.1 of <xref target="RFC7553"/>, with
-        the "_nicname" tag being derived from the "Who Is
-        Protocol" entry in the "Service  Name and Transport
-        Protocol Port Number Registry (see <xref
+        <t>The Service Tag of the URI record is constructed as per
+        Section 4.1 of <xref target="RFC7553"/>, with the "_nicname" tag
+        being derived from the "Who Is Protocol" entry in the "Service
+        Name and Transport Protocol Port Number Registry (see <xref
         target="RFC6335"/>).</t>
 
         <section title="URI Record with a data: scheme">
-          <t>Domain Operators MAY publish a record with a
-          "data:" scheme (<xref target="RFC2397"/>).
-          This allows the WHOAMI record to be embedded in the
-          URI record itself. An example of such a URI
+          <t>Domain Operators MAY publish a record with a "data:" scheme
+          (<xref target="RFC2397"/>). This allows the WHOAMI record to
+          be embedded in the URI record itself. An example of such a URI
           is below:</t>
 
           <figure>
@@ -119,8 +133,8 @@ BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
 0NzI3LTg4MDMtYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=</artwork>
           </figure>
 
-          <t>If a "data:" scheme is used, the MIME
-          type of the data MUST be "text/vcard".</t>
+          <t>If a "data:" scheme is used, the MIME type of the data MUST
+          be "text/vcard".</t>
         </section>
       </section>
 
@@ -186,17 +200,17 @@ BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
   <back>
 
     <references title="Normative References">
-    &RFC2119;
-    &RFC2397;
-    &RFC2818;
-    &RFC5785;
-    &RFC6335;
-    &RFC7553;
+      &RFC2119;
+      &RFC2397;
+      &RFC2818;
+      &RFC5785;
+      &RFC6335;
+      &RFC7553;
     </references>
 
     <references title="Informative References">
-    &RFC3912;
-    &RFC7480;
+      &RFC3912;
+      &RFC7480;
     </references>
 
     <section title="Change History">
