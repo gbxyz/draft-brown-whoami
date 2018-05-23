@@ -5,7 +5,7 @@
 <head profile="http://www.w3.org/2006/03/hcard http://dublincore.org/documents/2008/08/04/dc-html/">
   <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
 
-  <title>A Method For Identifying a Domain Operator's Point of Contact (WHOAMI)</title>
+  <title>WHOAMI: A Method For Identifying a Domain Operator's Contact Information</title>
 
   <style type="text/css" title="Xml2Rfc (sans serif)">
   /*<![CDATA[*/
@@ -376,30 +376,14 @@
   <link href="#rfc.toc" rel="Contents">
 <link href="#rfc.section.1" rel="Chapter" title="1 Introduction">
 <link href="#rfc.section.1.1" rel="Chapter" title="1.1 Conventions Used in This Document">
-<link href="#rfc.section.1.2" rel="Chapter" title="1.2 Definitions">
 <link href="#rfc.section.2" rel="Chapter" title="2 WHOAMI Protocol">
 <link href="#rfc.section.2.1" rel="Chapter" title="2.1 URI Record">
 <link href="#rfc.section.2.1.1" rel="Chapter" title="2.1.1 URI Record with a data: scheme">
 <link href="#rfc.section.2.2" rel="Chapter" title="2.2 Well-Known URL">
-<link href="#rfc.section.3" rel="Chapter" title="3 Operational Considerations">
-<link href="#rfc.section.3.1" rel="Chapter" title="3.1 Domain Registries">
-<link href="#rfc.section.3.1.1" rel="Chapter" title="3.1.1 Registration Policies">
-<link href="#rfc.section.3.1.2" rel="Chapter" title="3.1.2 Monitoring and Enforcement">
-<link href="#rfc.section.3.1.3" rel="Chapter" title="3.1.3 Collection of WHOAMI Data">
-<link href="#rfc.section.3.2" rel="Chapter" title="3.2 Domain Registrants">
-<link href="#rfc.section.3.2.1" rel="Chapter" title="3.2.1 Monitoring WHOAMI Access Requests">
-<link href="#rfc.section.3.2.2" rel="Chapter" title="3.2.2 Requiring Authentication for WHOAMI Access Requests">
-<link href="#rfc.section.3.2.3" rel="Chapter" title="3.2.3 Delegation of WHOAMI to Third Parties">
-<link href="#rfc.section.3.3" rel="Chapter" title="3.3 Domain Operators">
-<link href="#rfc.section.3.3.1" rel="Chapter" title="3.3.1 WHOAMI as a Service">
-<link href="#rfc.section.3.4" rel="Chapter" title="3.4 WHOAMI Clients">
-<link href="#rfc.section.3.4.1" rel="Chapter" title="3.4.1 Obtaining WHOAMI information for suspended domains">
-<link href="#rfc.section.4" rel="Chapter" title="4 Security Considerations">
-<link href="#rfc.section.5" rel="Chapter" title="5 Privacy Considerations">
-<link href="#rfc.section.6" rel="Chapter" title="6 IANA Considerations">
-<link href="#rfc.references" rel="Chapter" title="7 References">
-<link href="#rfc.references.1" rel="Chapter" title="7.1 Normative References">
-<link href="#rfc.references.2" rel="Chapter" title="7.2 Informative References">
+<link href="#rfc.section.3" rel="Chapter" title="3 IANA Considerations">
+<link href="#rfc.references" rel="Chapter" title="4 References">
+<link href="#rfc.references.1" rel="Chapter" title="4.1 Normative References">
+<link href="#rfc.references.2" rel="Chapter" title="4.2 Informative References">
 <link href="#rfc.appendix.A" rel="Chapter" title="A Change History">
 <link href="#rfc.appendix.A.1" rel="Chapter" title="A.1 Change from 01 to 02">
 <link href="#rfc.appendix.A.2" rel="Chapter" title="A.2 Change from 00 to 01">
@@ -410,10 +394,10 @@
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Brown, G." />
-  <meta name="dct.identifier" content="urn:ietf:id:draft-brown-whoami-01" />
-  <meta name="dct.issued" scheme="ISO8601" content="2018-2-27" />
-  <meta name="dct.abstract" content="This document proposes a decentralised alternative	to traditional WHOIS directories." />
-  <meta name="description" content="This document proposes a decentralised alternative	to traditional WHOIS directories." />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-brown-whoami-02" />
+  <meta name="dct.issued" scheme="ISO8601" content="2018-5-23" />
+  <meta name="dct.abstract" content="This document proposes a method by which the owner or operator of a domain may publish their contact information in a discoverable and machine-readable format." />
+  <meta name="description" content="This document proposes a method by which the owner or operator of a domain may publish their contact information in a discoverable and machine-readable format." />
 
 </head>
 
@@ -432,10 +416,10 @@
 </tr>
 <tr>
 <td class="left">Intended status: Experimental</td>
-<td class="right">February 27, 2018</td>
+<td class="right">May 23, 2018</td>
 </tr>
 <tr>
-<td class="left">Expires: August 31, 2018</td>
+<td class="left">Expires: November 24, 2018</td>
 <td class="right"></td>
 </tr>
 
@@ -443,19 +427,19 @@
     </tbody>
   </table>
 
-  <p class="title">A Method For Identifying a Domain Operator's Point of Contact (WHOAMI)<br />
-  <span class="filename">draft-brown-whoami-01</span></p>
+  <p class="title">WHOAMI: A Method For Identifying a Domain Operator's Contact Information<br />
+  <span class="filename">draft-brown-whoami-02</span></p>
   
   <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
-<p>This document proposes a decentralised alternative	to traditional WHOIS directories.</p>
+<p>This document proposes a method by which the owner or operator of a domain may publish their contact information in a discoverable and machine-readable format.</p>
 <h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on August 31, 2018.</p>
+<p>This Internet-Draft will expire on November 24, 2018.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
-<p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
+<p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.</p>
 
   
   <hr class="noprint" />
@@ -466,8 +450,6 @@
 </li>
 <ul><li>1.1.   <a href="#rfc.section.1.1">Conventions Used in This Document</a>
 </li>
-<li>1.2.   <a href="#rfc.section.1.2">Definitions</a>
-</li>
 </ul><li>2.   <a href="#rfc.section.2">WHOAMI Protocol</a>
 </li>
 <ul><li>2.1.   <a href="#rfc.section.2.1">URI Record</a>
@@ -476,43 +458,13 @@
 </li>
 </ul><li>2.2.   <a href="#rfc.section.2.2">Well-Known URL</a>
 </li>
-</ul><li>3.   <a href="#rfc.section.3">Operational Considerations</a>
+</ul><li>3.   <a href="#rfc.section.3">IANA Considerations</a>
 </li>
-<ul><li>3.1.   <a href="#rfc.section.3.1">Domain Registries</a>
+<li>4.   <a href="#rfc.references">References</a>
 </li>
-<ul><li>3.1.1.   <a href="#rfc.section.3.1.1">Registration Policies</a>
+<ul><li>4.1.   <a href="#rfc.references.1">Normative References</a>
 </li>
-<li>3.1.2.   <a href="#rfc.section.3.1.2">Monitoring and Enforcement</a>
-</li>
-<li>3.1.3.   <a href="#rfc.section.3.1.3">Collection of WHOAMI Data</a>
-</li>
-</ul><li>3.2.   <a href="#rfc.section.3.2">Domain Registrants</a>
-</li>
-<ul><li>3.2.1.   <a href="#rfc.section.3.2.1">Monitoring WHOAMI Access Requests</a>
-</li>
-<li>3.2.2.   <a href="#rfc.section.3.2.2">Requiring Authentication for WHOAMI Access Requests</a>
-</li>
-<li>3.2.3.   <a href="#rfc.section.3.2.3">Delegation of WHOAMI to Third Parties</a>
-</li>
-</ul><li>3.3.   <a href="#rfc.section.3.3">Domain Operators</a>
-</li>
-<ul><li>3.3.1.   <a href="#rfc.section.3.3.1">WHOAMI as a Service</a>
-</li>
-</ul><li>3.4.   <a href="#rfc.section.3.4">WHOAMI Clients</a>
-</li>
-<ul><li>3.4.1.   <a href="#rfc.section.3.4.1">Obtaining WHOAMI information for suspended domains</a>
-</li>
-</ul></ul><li>4.   <a href="#rfc.section.4">Security Considerations</a>
-</li>
-<li>5.   <a href="#rfc.section.5">Privacy Considerations</a>
-</li>
-<li>6.   <a href="#rfc.section.6">IANA Considerations</a>
-</li>
-<li>7.   <a href="#rfc.references">References</a>
-</li>
-<ul><li>7.1.   <a href="#rfc.references.1">Normative References</a>
-</li>
-<li>7.2.   <a href="#rfc.references.2">Informative References</a>
+<li>4.2.   <a href="#rfc.references.2">Informative References</a>
 </li>
 </ul><li>Appendix A.   <a href="#rfc.appendix.A">Change History</a>
 </li>
@@ -528,38 +480,14 @@
 
   <h1 id="rfc.section.1">
 <a href="#rfc.section.1">1.</a> Introduction</h1>
-<p id="rfc.section.1.p.1">It is common for <a href="#Definitions" class="xref">Domain Registries</a> - whether country-code or generic, operating at the second-level or lower - to operate a directory service to allow interested parties to identify the entity to which a <a href="#Definitions" class="xref">Domain</a> has been allocated. Typically, access to this directory service is provided using <a href="#RFC3912" class="xref">WHOIS</a> or <a href="#RFC7480" class="xref">RDAP</a> services.</p>
-<p id="rfc.section.1.p.2">Consequently, Domain Registries have developed a model whereby the <a href="#RFC5733" class="xref">Extensible Provisioning Protocol (EPP)</a> is used to collect large volumes of data - much of which is Personal Data (see <a href="#RFC6973" class="xref">[RFC6973]</a> for further discussion) - and then make this data available, with few restrictions, to anyone who might want it, for reasons both benign and malign. This is especially the case for generic Top-Level Domain Registries, who are subject to policy obligations which, as of writing, require a uniform data model for <a href="#Definitions" class="xref">Registration Data</a>, and do not permit differentiated access to this data.</p>
-<p id="rfc.section.1.p.3">This document proposes a decentralised alternative to traditional WHOIS directories. To avoid the need for Domain Registries to collect Registration Data, it provides a means by which <a href="#Definitions" class="xref">Domain Operators</a> may, at their own discretion (or in compliance with a Domain Registry's policy requirements), publish their contact information in a machine-readable manner.</p>
-<p id="rfc.section.1.p.4">It is contended that this approach eliminates the need for registries to maintain large databases of contact information, while still allowing supporting most of the uses to which such databases are put.</p>
+<p id="rfc.section.1.p.1">This document specifies a protocol which provides a way for the owner or operator of a domain name to publish their contact information in a discoverable and machine-readable format.</p>
+<p id="rfc.section.1.p.2">It serves as a complementary service to WHOIS (<a href="#RFC3912" class="xref">[RFC3912]</a>) and RDAP (<a href="#RFC7480" class="xref">[RFC7480]</a>), and differs in that it relies on self-publication by the domain owner or operator, rather than a centralised third party service.</p>
 <h1 id="rfc.section.1.1">
 <a href="#rfc.section.1.1">1.1.</a> Conventions Used in This Document</h1>
 <p id="rfc.section.1.1.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC2119" class="xref">[RFC2119]</a>.</p>
-<h1 id="rfc.section.1.2">
-<a href="#rfc.section.1.2">1.2.</a> <a href="#Definitions" id="Definitions">Definitions</a>
-</h1>
-<p id="rfc.section.1.2.p.1">In addition to the terms definied in this section, this document makes use of the terminology defined in <a href="#RFC7719" class="xref">[RFC7719]</a>.</p>
-<p></p>
-
-<dl>
-<dt>Domain:</dt>
-<dd style="margin-left: 8">A domain object as specified in <a href="#RFC5731" class="xref">[RFC5731]</a>.  In the DNS, this object corresponds to a Delegation of a "child" Zone from the "parent" Zone operated by the Domain Registry.</dd>
-<dt>Domain Registry:</dt>
-<dd style="margin-left: 8">The entity which (a) operates a provisioning service (such as EPP) for one or more Zones, the Authoritative server(s) for those Zones, and optionally a WHOIS and/or RDAP service.</dd>
-<dt>Domain Registrant:</dt>
-<dd style="margin-left: 8">The entity to whom the operation and usage of a Domain is assigned by a Registry.</dd>
-<dt>Domain Operator:</dt>
-<dd style="margin-left: 8">The entity (or entities) responsible for the administration of the Zone in the DNS corresponding to Domain. The Operator of a Domain may or may not also be its Registrant.</dd>
-<dt>Registration Data:</dt>
-<dd style="margin-left: 8">Metadata about a Domain object, such as its creation, update, and expiration date, the nameservers to which it is delegated, and the sponsoring registrar, plus a collection of zero or more Points of Contact for the Domain Registrant, Domain Operator and/or other entities responsible for the administration of a Domain.</dd>
-<dt>Point of Contact (PoC):</dt>
-<dd style="margin-left: 8">Contact information, including Contact Name, Organisation Name, Postal Addres, email, voice and fax numbers, for a single entity (which may be a natural person or legal entity).</dd>
-<dt>WHOAMI Record:</dt>
-<dd style="margin-left: 8">A Point of Contact in <a href="#RFC6350" class="xref">vCard</a> format.</dd>
-</dl>
 <h1 id="rfc.section.2">
 <a href="#rfc.section.2">2.</a> WHOAMI Protocol</h1>
-<p id="rfc.section.2.p.1">Domain Operators MAY choose to publish a WHOAMI Record in conformance with this specification. It may be published (a) at a URL indicated by a <a href="#RFC7553" class="xref">URI record</a> published in the DNS (as described in <a href="#dnsuri" class="xref">Section 2.1</a>), or (b) at a well-known URL (as described in <a href="#wellknown" class="xref">Section 2.2</a>).</p>
+<p id="rfc.section.2.p.1">Domain Operators MAY publish a WHOAMI Record in conformance with this specification. It may be published (a) at a URL indicated by a <a href="#RFC7553" class="xref">URI record</a> published in the DNS (as described in <a href="#dnsuri" class="xref">Section 2.1</a>), or (b) at a well-known URL (as described in <a href="#wellknown" class="xref">Section 2.2</a>).</p>
 <p id="rfc.section.2.p.2">Software which consumes WHOAMI records SHOULD first perform a DNS query for the URI record for a Domain, falling back to the well-known URL if the query does not return a positive result.</p>
 <h1 id="rfc.section.2.1">
 <a href="#rfc.section.2.1">2.1.</a> <a href="#dnsuri" id="dnsuri">URI Record</a>
@@ -571,7 +499,7 @@ _nicname._tcp IN URI 10 1 https://example.com/whoami/whoami.vcf</pre>
 <p id="rfc.section.2.1.p.3">The Service Tag of the URI record is constructed as per Section 4.1 of <a href="#RFC7553" class="xref">[RFC7553]</a>, with the "_nicname" tag being derived from the "Who Is Protocol" entry in the "Service	Name and Transport Protocol Port Number Registry (see <a href="#RFC6335" class="xref">[RFC6335]</a>).</p>
 <h1 id="rfc.section.2.1.1">
 <a href="#rfc.section.2.1.1">2.1.1.</a> URI Record with a data: scheme</h1>
-<p id="rfc.section.2.1.1.p.1">Domain Operators MAY publish a record with a <a href="#RFC2397" class="xref">"data:" scheme</a>.  This allows the WHOAMI record to be embedded in the URI record itself. An example of such a URI is below:</p>
+<p id="rfc.section.2.1.1.p.1">Domain Operators MAY publish a record with a "data:" scheme (<a href="#RFC2397" class="xref">[RFC2397]</a>).  This allows the WHOAMI record to be embedded in the URI record itself. An example of such a URI is below:</p>
 <pre>data:text/vcard;charset=utf-8;base64,QkVHSU46VkNBUkQNClZFUlNJT046NC4w
 DQpVSUQ6dXJuOnV1aWQ6NGZiZTg5NzEtMGJjMy00MjRjLTljMjYtMzZjM2UxZWZmNmIxD
 QpGTjtQSUQ9MS4xOkouIERvZQ0KTjpEb2U7Si47OzsNCkVNQUlMO1BJRD0xLjE6amRvZU
@@ -584,59 +512,21 @@ BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
 <p id="rfc.section.2.2.p.1">Domain Operators MAY publish their WHOAMI record at the following URL:</p>
 <pre>http://example.com/.well-known/whoami/whoami.vcf</pre>
 <p id="rfc.section.2.2.p.2">The "whoami" path segment has been registered in the "Well-Known URI Registry" (see <a href="#RFC5785" class="xref">[RFC5785]</a>).</p>
-<p id="rfc.section.2.2.p.3">Software which consumes WHOAMI records SHOULD follow 3xx redirections return in server responses.</p>
-<p id="rfc.section.2.2.p.4">It is RECOMMENDED that web servers which support <a href="#RFC2818" class="xref">HTTP over Transport Layer Security</a> provide a 3xx redirect to the HTTPS version of this URL.</p>
+<p id="rfc.section.2.2.p.3">It is RECOMMENDED that web servers which support HTTP over Transport Layer Security (TLS, <a href="#RFC2818" class="xref">[RFC2818]</a>) provide a 3xx redirect to the HTTPS version of this URL.</p>
+<p id="rfc.section.2.2.p.4">Software which consumes WHOAMI records MUST follow 3xx redirections return in server responses.</p>
 <p id="rfc.section.2.2.p.5">The Content-Type header of the server response MUST be "text/vcard".</p>
 <h1 id="rfc.section.3">
-<a href="#rfc.section.3">3.</a> Operational Considerations</h1>
-<h1 id="rfc.section.3.1">
-<a href="#rfc.section.3.1">3.1.</a> Domain Registries</h1>
-<h1 id="rfc.section.3.1.1">
-<a href="#rfc.section.3.1.1">3.1.1.</a> Registration Policies</h1>
-<h1 id="rfc.section.3.1.2">
-<a href="#rfc.section.3.1.2">3.1.2.</a> Monitoring and Enforcement</h1>
-<h1 id="rfc.section.3.1.3">
-<a href="#rfc.section.3.1.3">3.1.3.</a> Collection of WHOAMI Data</h1>
-<h1 id="rfc.section.3.2">
-<a href="#rfc.section.3.2">3.2.</a> Domain Registrants</h1>
-<h1 id="rfc.section.3.2.1">
-<a href="#rfc.section.3.2.1">3.2.1.</a> Monitoring WHOAMI Access Requests</h1>
-<h1 id="rfc.section.3.2.2">
-<a href="#rfc.section.3.2.2">3.2.2.</a> Requiring Authentication for WHOAMI Access Requests</h1>
-<h1 id="rfc.section.3.2.3">
-<a href="#rfc.section.3.2.3">3.2.3.</a> Delegation of WHOAMI to Third Parties</h1>
-<h1 id="rfc.section.3.3">
-<a href="#rfc.section.3.3">3.3.</a> Domain Operators</h1>
-<h1 id="rfc.section.3.3.1">
-<a href="#rfc.section.3.3.1">3.3.1.</a> WHOAMI as a Service</h1>
-<h1 id="rfc.section.3.4">
-<a href="#rfc.section.3.4">3.4.</a> WHOAMI Clients</h1>
-<h1 id="rfc.section.3.4.1">
-<a href="#rfc.section.3.4.1">3.4.1.</a> Obtaining WHOAMI information for suspended domains</h1>
-<h1 id="rfc.section.4">
-<a href="#rfc.section.4">4.</a> <a href="#Security" id="Security">Security Considerations</a>
+<a href="#rfc.section.3">3.</a> <a href="#IANA" id="IANA">IANA Considerations</a>
 </h1>
-<p></p>
-
-<ul class="empty"><li>TODO, but probably lots.</li></ul>
-<h1 id="rfc.section.5">
-<a href="#rfc.section.5">5.</a> <a href="#Privacy" id="Privacy">Privacy Considerations</a>
-</h1>
-<p></p>
-
-<ul class="empty"><li>TODO, but probably lots.</li></ul>
-<h1 id="rfc.section.6">
-<a href="#rfc.section.6">6.</a> <a href="#IANA" id="IANA">IANA Considerations</a>
-</h1>
-<p id="rfc.section.6.p.1">This specification registers the "whoami" well-known URI in the "Well-Known URIs" registry as defined by <a href="#RFC5785" class="xref">[RFC5785]</a>.</p>
-<p id="rfc.section.6.p.2">URI suffix:  whoami</p>
-<p id="rfc.section.6.p.3">Change controller:  IETF</p>
-<p id="rfc.section.6.p.4">Specification document(s):  (this document)</p>
-<p id="rfc.section.6.p.5">Related information:  no remarks</p>
+<p id="rfc.section.3.p.1">This specification registers the "whoami" well-known URI in the "Well-Known URIs" registry as defined by <a href="#RFC5785" class="xref">[RFC5785]</a>.</p>
+<p id="rfc.section.3.p.2">URI suffix:  whoami</p>
+<p id="rfc.section.3.p.3">Change controller:  IETF</p>
+<p id="rfc.section.3.p.4">Specification document(s):  (this document)</p>
+<p id="rfc.section.3.p.5">Related information:  no remarks</p>
 <h1 id="rfc.references">
-<a href="#rfc.references">7.</a> References</h1>
+<a href="#rfc.references">4.</a> References</h1>
 <h1 id="rfc.references.1">
-<a href="#rfc.references.1">7.1.</a> Normative References</h1>
+<a href="#rfc.references.1">4.1.</a> Normative References</h1>
 <table><tbody>
 <tr>
 <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
@@ -664,18 +554,13 @@ BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
 <a>Cotton, M.</a>, <a>Eggert, L.</a>, <a>Touch, J.</a>, <a>Westerlund, M.</a> and <a>S. Cheshire</a>, "<a href="https://tools.ietf.org/html/rfc6335">Internet Assigned Numbers Authority (IANA) Procedures for the Management of the Service Name and Transport Protocol Port Number Registry</a>", BCP 165, RFC 6335, DOI 10.17487/RFC6335, August 2011.</td>
 </tr>
 <tr>
-<td class="reference"><b id="RFC6350">[RFC6350]</b></td>
-<td class="top">
-<a>Perreault, S.</a>, "<a href="https://tools.ietf.org/html/rfc6350">vCard Format Specification</a>", RFC 6350, DOI 10.17487/RFC6350, August 2011.</td>
-</tr>
-<tr>
 <td class="reference"><b id="RFC7553">[RFC7553]</b></td>
 <td class="top">
 <a>Faltstrom, P.</a> and <a>O. Kolkman</a>, "<a href="https://tools.ietf.org/html/rfc7553">The Uniform Resource Identifier (URI) DNS Resource Record</a>", RFC 7553, DOI 10.17487/RFC7553, June 2015.</td>
 </tr>
 </tbody></table>
 <h1 id="rfc.references.2">
-<a href="#rfc.references.2">7.2.</a> Informative References</h1>
+<a href="#rfc.references.2">4.2.</a> Informative References</h1>
 <table><tbody>
 <tr>
 <td class="reference"><b id="RFC3912">[RFC3912]</b></td>
@@ -683,39 +568,9 @@ BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
 <a>Daigle, L.</a>, "<a href="https://tools.ietf.org/html/rfc3912">WHOIS Protocol Specification</a>", RFC 3912, DOI 10.17487/RFC3912, September 2004.</td>
 </tr>
 <tr>
-<td class="reference"><b id="RFC5731">[RFC5731]</b></td>
-<td class="top">
-<a>Hollenbeck, S.</a>, "<a href="https://tools.ietf.org/html/rfc5731">Extensible Provisioning Protocol (EPP) Domain Name Mapping</a>", STD 69, RFC 5731, DOI 10.17487/RFC5731, August 2009.</td>
-</tr>
-<tr>
-<td class="reference"><b id="RFC5733">[RFC5733]</b></td>
-<td class="top">
-<a>Hollenbeck, S.</a>, "<a href="https://tools.ietf.org/html/rfc5733">Extensible Provisioning Protocol (EPP) Contact Mapping</a>", STD 69, RFC 5733, DOI 10.17487/RFC5733, August 2009.</td>
-</tr>
-<tr>
-<td class="reference"><b id="RFC6749">[RFC6749]</b></td>
-<td class="top">
-<a>Hardt, D.</a>, "<a href="https://tools.ietf.org/html/rfc6749">The OAuth 2.0 Authorization Framework</a>", RFC 6749, DOI 10.17487/RFC6749, October 2012.</td>
-</tr>
-<tr>
-<td class="reference"><b id="RFC6973">[RFC6973]</b></td>
-<td class="top">
-<a>Cooper, A.</a>, <a>Tschofenig, H.</a>, <a>Aboba, B.</a>, <a>Peterson, J.</a>, <a>Morris, J.</a>, <a>Hansen, M.</a> and <a>R. Smith</a>, "<a href="https://tools.ietf.org/html/rfc6973">Privacy Considerations for Internet Protocols</a>", RFC 6973, DOI 10.17487/RFC6973, July 2013.</td>
-</tr>
-<tr>
 <td class="reference"><b id="RFC7480">[RFC7480]</b></td>
 <td class="top">
 <a>Newton, A.</a>, <a>Ellacott, B.</a> and <a>N. Kong</a>, "<a href="https://tools.ietf.org/html/rfc7480">HTTP Usage in the Registration Data Access Protocol (RDAP)</a>", RFC 7480, DOI 10.17487/RFC7480, March 2015.</td>
-</tr>
-<tr>
-<td class="reference"><b id="RFC7617">[RFC7617]</b></td>
-<td class="top">
-<a>Reschke, J.</a>, "<a href="https://tools.ietf.org/html/rfc7617">The 'Basic' HTTP Authentication Scheme</a>", RFC 7617, DOI 10.17487/RFC7617, September 2015.</td>
-</tr>
-<tr>
-<td class="reference"><b id="RFC7719">[RFC7719]</b></td>
-<td class="top">
-<a>Hoffman, P.</a>, <a>Sullivan, A.</a> and <a>K. Fujiwara</a>, "<a href="https://tools.ietf.org/html/rfc7719">DNS Terminology</a>", RFC 7719, DOI 10.17487/RFC7719, December 2015.</td>
 </tr>
 </tbody></table>
 <h1 id="rfc.appendix.A">
@@ -723,13 +578,15 @@ BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
 <h1 id="rfc.appendix.A.1">
 <a href="#rfc.appendix.A.1">A.1.</a> <a href="#change-01-to-02" id="change-01-to-02">Change from 01 to 02</a>
 </h1>
-<p id="rfc.section.A.1.p.1">TODO</p>
+<p></p>
+
+<ol><li>Removed all the layer-9 stuff.</li></ol>
 <h1 id="rfc.appendix.A.2">
 <a href="#rfc.appendix.A.2">A.2.</a> <a href="#change-00-to-01" id="change-00-to-01">Change from 00 to 01</a>
 </h1>
 <p></p>
 
-<ol><li>Fixed well-know URI registration, various typoos. Improved consistency of terminology.</li></ol>
+<ol><li>Fixed well-known URI registration, various typos. Improved consistency of terminology.</li></ol>
 <h1 id="rfc.authors"><a href="#rfc.authors">Author's Address</a></h1>
 <div class="avoidbreak">
   <address class="vcard">

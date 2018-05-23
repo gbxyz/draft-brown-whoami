@@ -4,17 +4,18 @@
 
 Internet Engineering Task Force                                 G. Brown
 Internet-Draft                                      CentralNic Group plc
-Intended status: Experimental                          February 27, 2018
-Expires: August 31, 2018
+Intended status: Experimental                               May 23, 2018
+Expires: November 24, 2018
 
 
- A Method For Identifying a Domain Operator's Point of Contact (WHOAMI)
-                         draft-brown-whoami-01
+WHOAMI: A Method For Identifying a Domain Operator's Contact Information
+                         draft-brown-whoami-02
 
 Abstract
 
-   This document proposes a decentralised alternative to traditional
-   WHOIS directories.
+   This document proposes a method by which the owner or operator of a
+   domain may publish their contact information in a discoverable and
+   machine-readable format.
 
 Status of This Memo
 
@@ -31,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 31, 2018.
+   This Internet-Draft will expire on November 24, 2018.
 
 Copyright Notice
 
@@ -43,91 +44,47 @@ Copyright Notice
    (https://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
-   to this document.  Code Components extracted from this document must
-   include Simplified BSD License text as described in Section 4.e of
-   the Trust Legal Provisions and are provided without warranty as
-   described in the Simplified BSD License.
+   to this document.
 
 
 
 
 
 
-Brown                    Expires August 31, 2018                [Page 1]
+
+
+Brown                   Expires November 24, 2018               [Page 1]
 
-Internet-Draft                Domain WHOAMI                February 2018
+Internet-Draft                   WHOAMI                         May 2018
 
 
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-     1.1.  Conventions Used in This Document . . . . . . . . . . . .   3
-     1.2.  Definitions . . . . . . . . . . . . . . . . . . . . . . .   3
-   2.  WHOAMI Protocol . . . . . . . . . . . . . . . . . . . . . . .   4
-     2.1.  URI Record  . . . . . . . . . . . . . . . . . . . . . . .   4
-       2.1.1.  URI Record with a data: scheme  . . . . . . . . . . .   4
-     2.2.  Well-Known URL  . . . . . . . . . . . . . . . . . . . . .   5
-   3.  Operational Considerations  . . . . . . . . . . . . . . . . .   5
-     3.1.  Domain Registries . . . . . . . . . . . . . . . . . . . .   5
-       3.1.1.  Registration Policies . . . . . . . . . . . . . . . .   5
-       3.1.2.  Monitoring and Enforcement  . . . . . . . . . . . . .   5
-       3.1.3.  Collection of WHOAMI Data . . . . . . . . . . . . . .   5
-     3.2.  Domain Registrants  . . . . . . . . . . . . . . . . . . .   5
-       3.2.1.  Monitoring WHOAMI Access Requests . . . . . . . . . .   5
-       3.2.2.  Requiring Authentication for WHOAMI Access Requests .   5
-       3.2.3.  Delegation of WHOAMI to Third Parties . . . . . . . .   5
-     3.3.  Domain Operators  . . . . . . . . . . . . . . . . . . . .   5
-       3.3.1.  WHOAMI as a Service . . . . . . . . . . . . . . . . .   5
-     3.4.  WHOAMI Clients  . . . . . . . . . . . . . . . . . . . . .   6
-       3.4.1.  Obtaining WHOAMI information for suspended domains  .   6
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
-   5.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .   6
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .   6
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .   7
-   Appendix A.  Change History . . . . . . . . . . . . . . . . . . .   8
-     A.1.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .   8
-     A.2.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .   8
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   8
+     1.1.  Conventions Used in This Document . . . . . . . . . . . .   2
+   2.  WHOAMI Protocol . . . . . . . . . . . . . . . . . . . . . . .   2
+     2.1.  URI Record  . . . . . . . . . . . . . . . . . . . . . . .   3
+       2.1.1.  URI Record with a data: scheme  . . . . . . . . . . .   3
+     2.2.  Well-Known URL  . . . . . . . . . . . . . . . . . . . . .   3
+   3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
+   4.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   4
+     4.1.  Normative References  . . . . . . . . . . . . . . . . . .   4
+     4.2.  Informative References  . . . . . . . . . . . . . . . . .   5
+   Appendix A.  Change History . . . . . . . . . . . . . . . . . . .   5
+     A.1.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .   5
+     A.2.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .   5
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   5
 
 1.  Introduction
 
-   It is common for Domain Registries (Section 1.2) - whether country-
-   code or generic, operating at the second-level or lower - to operate
-   a directory service to allow interested parties to identify the
-   entity to which a Domain (Section 1.2) has been allocated.
-   Typically, access to this directory service is provided using WHOIS
-   [RFC3912] or RDAP [RFC7480] services.
+   This document specifies a protocol which provides a way for the owner
+   or operator of a domain name to publish their contact information in
+   a discoverable and machine-readable format.
 
-   Consequently, Domain Registries have developed a model whereby the
-   Extensible Provisioning Protocol (EPP) [RFC5733] is used to collect
-   large volumes of data - much of which is Personal Data (see [RFC6973]
-   for further discussion) - and then make this data available, with few
-   restrictions, to anyone who might want it, for reasons both benign
-   and malign.  This is especially the case for generic Top-Level Domain
-
-
-
-Brown                    Expires August 31, 2018                [Page 2]
-
-Internet-Draft                Domain WHOAMI                February 2018
-
-
-   Registries, who are subject to policy obligations which, as of
-   writing, require a uniform data model for Registration Data
-   (Section 1.2), and do not permit differentiated access to this data.
-
-   This document proposes a decentralised alternative to traditional
-   WHOIS directories.  To avoid the need for Domain Registries to
-   collect Registration Data, it provides a means by which Domain
-   Operators (Section 1.2) may, at their own discretion (or in
-   compliance with a Domain Registry's policy requirements), publish
-   their contact information in a machine-readable manner.
-
-   It is contended that this approach eliminates the need for registries
-   to maintain large databases of contact information, while still
-   allowing supporting most of the uses to which such databases are put.
+   It serves as a complementary service to WHOIS ([RFC3912]) and RDAP
+   ([RFC7480]), and differs in that it relies on self-publication by the
+   domain owner or operator, rather than a centralised third party
+   service.
 
 1.1.  Conventions Used in This Document
 
@@ -135,59 +92,27 @@ Internet-Draft                Domain WHOAMI                February 2018
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in [RFC2119].
 
-1.2.  Definitions
-
-   In addition to the terms definied in this section, this document
-   makes use of the terminology defined in [RFC7719].
-
-   Domain:  A domain object as specified in [RFC5731].  In the DNS, this
-      object corresponds to a Delegation of a "child" Zone from the
-      "parent" Zone operated by the Domain Registry.
-
-   Domain Registry:  The entity which (a) operates a provisioning
-      service (such as EPP) for one or more Zones, the Authoritative
-      server(s) for those Zones, and optionally a WHOIS and/or RDAP
-      service.
-
-   Domain Registrant:  The entity to whom the operation and usage of a
-      Domain is assigned by a Registry.
-
-   Domain Operator:  The entity (or entities) responsible for the
-      administration of the Zone in the DNS corresponding to Domain.
-      The Operator of a Domain may or may not also be its Registrant.
-
-   Registration Data:  Metadata about a Domain object, such as its
-      creation, update, and expiration date, the nameservers to which it
-      is delegated, and the sponsoring registrar, plus a collection of
-      zero or more Points of Contact for the Domain Registrant, Domain
-      Operator and/or other entities responsible for the administration
-      of a Domain.
-
-
-
-Brown                    Expires August 31, 2018                [Page 3]
-
-Internet-Draft                Domain WHOAMI                February 2018
-
-
-   Point of Contact (PoC):  Contact information, including Contact Name,
-      Organisation Name, Postal Addres, email, voice and fax numbers,
-      for a single entity (which may be a natural person or legal
-      entity).
-
-   WHOAMI Record:  A Point of Contact in vCard [RFC6350] format.
-
 2.  WHOAMI Protocol
 
-   Domain Operators MAY choose to publish a WHOAMI Record in conformance
-   with this specification.  It may be published (a) at a URL indicated
-   by a URI record [RFC7553] published in the DNS (as described in
-   Section 2.1), or (b) at a well-known URL (as described in
-   Section 2.2).
+   Domain Operators MAY publish a WHOAMI Record in conformance with this
+   specification.  It may be published (a) at a URL indicated by a URI
+   record [RFC7553] published in the DNS (as described in Section 2.1),
+   or (b) at a well-known URL (as described in Section 2.2).
 
    Software which consumes WHOAMI records SHOULD first perform a DNS
    query for the URI record for a Domain, falling back to the well-known
    URL if the query does not return a positive result.
+
+
+
+
+
+
+
+Brown                   Expires November 24, 2018               [Page 2]
+
+Internet-Draft                   WHOAMI                         May 2018
+
 
 2.1.  URI Record
 
@@ -208,7 +133,7 @@ Internet-Draft                Domain WHOAMI                February 2018
 2.1.1.  URI Record with a data: scheme
 
    Domain Operators MAY publish a record with a "data:" scheme
-   [RFC2397].  This allows the WHOAMI record to be embedded in the URI
+   ([RFC2397]).  This allows the WHOAMI record to be embedded in the URI
    record itself.  An example of such a URI is below:
 
    data:text/vcard;charset=utf-8;base64,QkVHSU46VkNBUkQNClZFUlNJT046NC4w
@@ -216,15 +141,6 @@ Internet-Draft                Domain WHOAMI                February 2018
    QpGTjtQSUQ9MS4xOkouIERvZQ0KTjpEb2U7Si47OzsNCkVNQUlMO1BJRD0xLjE6amRvZU
    BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
    0NzI3LTg4MDMtYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=
-
-
-
-
-
-Brown                    Expires August 31, 2018                [Page 4]
-
-Internet-Draft                Domain WHOAMI                February 2018
-
 
    If a "data:" scheme is used, the MIME type of the data MUST be "text/
    vcard".
@@ -239,62 +155,24 @@ Internet-Draft                Domain WHOAMI                February 2018
    The "whoami" path segment has been registered in the "Well-Known URI
    Registry" (see [RFC5785]).
 
-   Software which consumes WHOAMI records SHOULD follow 3xx redirections
+   It is RECOMMENDED that web servers which support HTTP over Transport
+   Layer Security (TLS, [RFC2818]) provide a 3xx redirect to the HTTPS
+   version of this URL.
+
+   Software which consumes WHOAMI records MUST follow 3xx redirections
    return in server responses.
 
-   It is RECOMMENDED that web servers which support HTTP over Transport
-   Layer Security [RFC2818] provide a 3xx redirect to the HTTPS version
-   of this URL.
+
+
+
+Brown                   Expires November 24, 2018               [Page 3]
+
+Internet-Draft                   WHOAMI                         May 2018
+
 
    The Content-Type header of the server response MUST be "text/vcard".
 
-3.  Operational Considerations
-
-3.1.  Domain Registries
-
-3.1.1.  Registration Policies
-
-3.1.2.  Monitoring and Enforcement
-
-3.1.3.  Collection of WHOAMI Data
-
-3.2.  Domain Registrants
-
-3.2.1.  Monitoring WHOAMI Access Requests
-
-3.2.2.  Requiring Authentication for WHOAMI Access Requests
-
-3.2.3.  Delegation of WHOAMI to Third Parties
-
-3.3.  Domain Operators
-
-3.3.1.  WHOAMI as a Service
-
-
-
-
-
-
-
-
-Brown                    Expires August 31, 2018                [Page 5]
-
-Internet-Draft                Domain WHOAMI                February 2018
-
-
-3.4.  WHOAMI Clients
-
-3.4.1.  Obtaining WHOAMI information for suspended domains
-
-4.  Security Considerations
-
-      TODO, but probably lots.
-
-5.  Privacy Considerations
-
-      TODO, but probably lots.
-
-6.  IANA Considerations
+3.  IANA Considerations
 
    This specification registers the "whoami" well-known URI in the
    "Well-Known URIs" registry as defined by [RFC5785].
@@ -307,9 +185,9 @@ Internet-Draft                Domain WHOAMI                February 2018
 
    Related information: no remarks
 
-7.  References
+4.  References
 
-7.1.  Normative References
+4.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -329,15 +207,6 @@ Internet-Draft                Domain WHOAMI                February 2018
               DOI 10.17487/RFC5785, April 2010,
               <https://www.rfc-editor.org/info/rfc5785>.
 
-
-
-
-
-Brown                    Expires August 31, 2018                [Page 6]
-
-Internet-Draft                Domain WHOAMI                February 2018
-
-
    [RFC6335]  Cotton, M., Eggert, L., Touch, J., Westerlund, M., and S.
               Cheshire, "Internet Assigned Numbers Authority (IANA)
               Procedures for the Management of the Service Name and
@@ -345,72 +214,38 @@ Internet-Draft                Domain WHOAMI                February 2018
               RFC 6335, DOI 10.17487/RFC6335, August 2011,
               <https://www.rfc-editor.org/info/rfc6335>.
 
-   [RFC6350]  Perreault, S., "vCard Format Specification", RFC 6350,
-              DOI 10.17487/RFC6350, August 2011,
-              <https://www.rfc-editor.org/info/rfc6350>.
-
    [RFC7553]  Faltstrom, P. and O. Kolkman, "The Uniform Resource
               Identifier (URI) DNS Resource Record", RFC 7553,
               DOI 10.17487/RFC7553, June 2015,
               <https://www.rfc-editor.org/info/rfc7553>.
 
-7.2.  Informative References
+
+
+Brown                   Expires November 24, 2018               [Page 4]
+
+Internet-Draft                   WHOAMI                         May 2018
+
+
+4.2.  Informative References
 
    [RFC3912]  Daigle, L., "WHOIS Protocol Specification", RFC 3912,
               DOI 10.17487/RFC3912, September 2004,
               <https://www.rfc-editor.org/info/rfc3912>.
-
-   [RFC5731]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
-              Domain Name Mapping", STD 69, RFC 5731,
-              DOI 10.17487/RFC5731, August 2009,
-              <https://www.rfc-editor.org/info/rfc5731>.
-
-   [RFC5733]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
-              Contact Mapping", STD 69, RFC 5733, DOI 10.17487/RFC5733,
-              August 2009, <https://www.rfc-editor.org/info/rfc5733>.
-
-   [RFC6749]  Hardt, D., Ed., "The OAuth 2.0 Authorization Framework",
-              RFC 6749, DOI 10.17487/RFC6749, October 2012,
-              <https://www.rfc-editor.org/info/rfc6749>.
-
-   [RFC6973]  Cooper, A., Tschofenig, H., Aboba, B., Peterson, J.,
-              Morris, J., Hansen, M., and R. Smith, "Privacy
-              Considerations for Internet Protocols", RFC 6973,
-              DOI 10.17487/RFC6973, July 2013,
-              <https://www.rfc-editor.org/info/rfc6973>.
 
    [RFC7480]  Newton, A., Ellacott, B., and N. Kong, "HTTP Usage in the
               Registration Data Access Protocol (RDAP)", RFC 7480,
               DOI 10.17487/RFC7480, March 2015,
               <https://www.rfc-editor.org/info/rfc7480>.
 
-
-
-
-
-
-Brown                    Expires August 31, 2018                [Page 7]
-
-Internet-Draft                Domain WHOAMI                February 2018
-
-
-   [RFC7617]  Reschke, J., "The 'Basic' HTTP Authentication Scheme",
-              RFC 7617, DOI 10.17487/RFC7617, September 2015,
-              <https://www.rfc-editor.org/info/rfc7617>.
-
-   [RFC7719]  Hoffman, P., Sullivan, A., and K. Fujiwara, "DNS
-              Terminology", RFC 7719, DOI 10.17487/RFC7719, December
-              2015, <https://www.rfc-editor.org/info/rfc7719>.
-
 Appendix A.  Change History
 
 A.1.  Change from 01 to 02
 
-   TODO
+   1.  Removed all the layer-9 stuff.
 
 A.2.  Change from 00 to 01
 
-   1.  Fixed well-know URI registration, various typoos.  Improved
+   1.  Fixed well-known URI registration, various typos.  Improved
        consistency of terminology.
 
 Author's Address
@@ -442,7 +277,4 @@ Author's Address
 
 
 
-
-
-
-Brown                    Expires August 31, 2018                [Page 8]
+Brown                   Expires November 24, 2018               [Page 5]
