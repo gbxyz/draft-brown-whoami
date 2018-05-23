@@ -21,160 +21,168 @@
 <?rfc comments="yes" ?>
 <?rfc inline="yes" ?>
 <rfc category="exp" docName="draft-brown-whoami-02" ipr="trust200902" submissionType="independent">
-	<front>
-		<title abbrev="WHOAMI">WHOAMI: A Method For Identifying a Domain Operator's Contact Information</title>
-		<author fullname="Gavin Brown" initials="G" surname="Brown">
-			<organization>CentralNic Group plc</organization>
-			<address>
-				<postal>
-				<street>35-39 Moorgate</street>
-				<city>London</city>
-				<region>England</region>
-				<code>EC2R 6AR</code>
-				<country>GB</country>
-				</postal>
-				<phone>+44 20 33 88 0600</phone>
-				<email>gavin.brown@centralnic.com</email>
-				<uri>https://www.centralnic.com</uri>
-			</address>
-		</author>
-		<date month="May" year="2018" />
-		<area>Applications</area>
-		<workgroup>Internet Engineering Task Force</workgroup>
+  <front>
+    <title abbrev="WHOAMI">WHOAMI: A Method For Identifying a Domain Operator's Contact Information</title>
+    <author fullname="Gavin Brown" initials="G" surname="Brown">
+      <organization>CentralNic Group plc</organization>
+      <address>
+        <postal>
+        <street>35-39 Moorgate</street>
+        <city>London</city>
+        <region>England</region>
+        <code>EC2R 6AR</code>
+        <country>GB</country>
+        </postal>
+        <phone>+44 20 33 88 0600</phone>
+        <email>gavin.brown@centralnic.com</email>
+        <uri>https://www.centralnic.com</uri>
+      </address>
+    </author>
+    <date month="May" year="2018" />
+    <area>Applications</area>
+    <workgroup>Internet Engineering Task Force</workgroup>
 
-		<abstract><t>This document proposes a method by which the owner or operator of a domain may publish their contact information in a discoverable and machine-readable format.</t></abstract>
-	</front>
+    <abstract><t>This document proposes a method by which the owner or operator of a domain may publish their contact information in a discoverable and machine-readable format.</t></abstract>
+  </front>
 
-	<middle>
-		<section title="Introduction">
+  <middle>
+    <section title="Introduction">
 
-			<t>This document specifies a protocol which provides a way for the owner or operator of a domain name to publish their contact information in a discoverable and machine-readable format.</t>
+      <t>This document specifies a protocol which provides a way for the owner or operator of a domain name to publish their contact information in a discoverable and machine-readable format.</t>
 
-			<t>It serves as a complementary service to WHOIS (<xref target="RFC3912"/>) and RDAP (<xref target="RFC7480"/>), and differs in that it relies on self-publication by the domain owner or operator, rather than a centralised third party service.</t>
+      <t>It serves as a complementary service to WHOIS (<xref target="RFC3912"/>) and RDAP (<xref target="RFC7480"/>), and differs in that it relies on self-publication by the domain owner or operator, rather than a centralised third party service.</t>
 
-			<section title="Conventions Used in This Document">
-				<t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-				"SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL"
-				in this document are to be interpreted as described in <xref
-				target="RFC2119"/>.</t>
-			</section>
+      <section title="Conventions Used in This Document">
+        <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+        "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL"
+        in this document are to be interpreted as described in <xref
+        target="RFC2119"/>.</t>
+      </section>
 
-		</section>
+    </section>
 
-		<section title="WHOAMI Protocol">
-			<t>Domain Operators MAY publish a WHOAMI Record
-			in conformance with this specification. It may be published (a) at a URL indicated by a <xref
-			target="RFC7553">URI record</xref> published in the DNS (as
-			described in <xref target="dnsuri"/>), or (b) at a well-known URL (as described in
-			<xref target="wellknown"/>).</t>
+    <section title="WHOAMI Protocol">
+      <t>Domain Operators MAY publish a WHOAMI Record
+      in conformance with this specification. It may be published (a) at a URL indicated by a <xref
+      target="RFC7553">URI record</xref> published in the DNS (as
+      described in <xref target="dnsuri"/>), or (b) at a well-known URL (as described in
+      <xref target="wellknown"/>).</t>
 
-			<t>Software which consumes WHOAMI records
-			SHOULD first perform a DNS query for the URI record for a
-			Domain, falling back to the well-known URL if the query does not
-			return a positive result.</t>
+      <t>Software which consumes WHOAMI records
+      SHOULD first perform a DNS query for the URI record for a
+      Domain, falling back to the well-known URL if the query does not
+      return a positive result.</t>
 
-			<section anchor="dnsuri" title="URI Record">
-				<t>Domain Operators MAY publish the URL of their
-				WHOAMI record as a URI record in the DNS. An example of
-				such a record is below:</t>
+      <section anchor="dnsuri" title="URI Record">
+        <t>Domain Operators MAY publish the URL of their
+        WHOAMI record as a URI record in the DNS. An example of
+        such a record is below:</t>
 
-				<figure><artwork>$ORIGIN example.com.
+        <figure><artwork>$ORIGIN example.com.
 _nicname._tcp IN URI 10 1 https://example.com/whoami/whoami.vcf</artwork>
-				</figure>
+        </figure>
 
-				<t>Note: the Owner Name, Priority, Weight, and Target
-				in the above record are illustrative only.</t>
+        <t>Note: the Owner Name, Priority, Weight, and Target
+        in the above record are illustrative only.</t>
 
-				<t>The Service Tag of the URI record is constructed
-				as per Section 4.1 of <xref target="RFC7553"/>, with
-				the "_nicname" tag being derived from the "Who Is
-				Protocol" entry in the "Service	Name and Transport
-				Protocol Port Number Registry (see <xref target="RFC6335"/>).</t>
+        <t>The Service Tag of the URI record is constructed
+        as per Section 4.1 of <xref target="RFC7553"/>, with
+        the "_nicname" tag being derived from the "Who Is
+        Protocol" entry in the "Service  Name and Transport
+        Protocol Port Number Registry (see <xref target="RFC6335"/>).</t>
 
-				<section title="URI Record with a data: scheme">
-					<t>Domain Operators MAY publish a record with a
-					"data:" scheme (<xref target="RFC2397"/>).
-					This allows the WHOAMI record to be embedded in the
-					URI record itself. An example of such a URI
-					is below:</t>
+        <section title="URI Record with a data: scheme">
+          <t>Domain Operators MAY publish a record with a
+          "data:" scheme (<xref target="RFC2397"/>).
+          This allows the WHOAMI record to be embedded in the
+          URI record itself. An example of such a URI
+          is below:</t>
 
-					<figure>
-						<artwork>data:text/vcard;charset=utf-8;base64,QkVHSU46VkNBUkQNClZFUlNJT046NC4w
+          <figure>
+            <artwork>data:text/vcard;charset=utf-8;base64,QkVHSU46VkNBUkQNClZFUlNJT046NC4w
 DQpVSUQ6dXJuOnV1aWQ6NGZiZTg5NzEtMGJjMy00MjRjLTljMjYtMzZjM2UxZWZmNmIxD
 QpGTjtQSUQ9MS4xOkouIERvZQ0KTjpEb2U7Si47OzsNCkVNQUlMO1BJRD0xLjE6amRvZU
 BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
 0NzI3LTg4MDMtYTFlOWMxNGUwNTU2DQpFTkQ6VkNBUkQ=</artwork>
-					</figure>
+          </figure>
 
-					<t>If a "data:" scheme is used, the MIME
-					type of the data MUST be "text/vcard".</t>
-				</section>
-			</section>
+          <t>If a "data:" scheme is used, the MIME
+          type of the data MUST be "text/vcard".</t>
+        </section>
+      </section>
 
-			<section anchor="wellknown" title="Well-Known URL">
-				<t>Domain Operators MAY publish their WHOAMI record at the following URL:</t>
+      <section anchor="wellknown" title="Well-Known URL">
+        <t>Domain Operators MAY publish their WHOAMI record at the following URL:</t>
 
-				<figure>
-				<artwork>http://example.com/.well-known/whoami/whoami.vcf</artwork>
-				</figure>
+        <figure>
+        <artwork>http://example.com/.well-known/whoami/whoami.vcf</artwork>
+        </figure>
 
-				<t>The "whoami" path segment has been registered in
-				the "Well-Known URI Registry" (see <xref
-				target="RFC5785"/>).</t>
+        <t>The "whoami" path segment has been registered in
+        the "Well-Known URI Registry" (see <xref
+        target="RFC5785"/>).</t>
 
-				<t>It is RECOMMENDED that web servers which support
-				HTTP over Transport Layer Security (TLS,
-				<xref target="RFC2818"/>) provide a 3xx redirect to
-				the HTTPS version of this URL.</t>
+        <t>It is RECOMMENDED that web servers which support
+        HTTP over Transport Layer Security (TLS,
+        <xref target="RFC2818"/>) provide a 3xx redirect to
+        the HTTPS version of this URL.</t>
 
-				<t>Software which consumes WHOAMI records
-				MUST follow 3xx redirections return in server
-				responses.</t>
+        <t>Software which consumes WHOAMI records
+        MUST follow 3xx redirections return in server
+        responses.</t>
 
-				<t>The Content-Type header of the server response
-				MUST be "text/vcard".</t>
-			</section>
+        <t>The Content-Type header of the server response
+        MUST be "text/vcard".</t>
+      </section>
 
-		</section>
+    </section>
 
-		<section anchor="IANA" title="IANA Considerations">
-			<t>This specification registers the "whoami" well-known URI in the
-			"Well-Known URIs" registry as defined by <xref target="RFC5785"/>.</t>
-			<t>URI suffix:  whoami</t>
-			<t>Change controller:  IETF</t>
-			<t>Specification document(s):  (this document)</t>
-			<t>Related information:  no remarks</t>
-		</section>
-	</middle>
+    <section anchor="Security" title="Security Considerations">
+      <t>TODO</t>
+    </section>
 
-	<back>
-		<references title="Normative References">
-		&RFC2119;
-		&RFC2397;
-		&RFC2818;
-		&RFC5785;
-		&RFC6335;
-		&RFC7553;
-		</references>
-		<references title="Informative References">
-		&RFC3912;
-		&RFC7480;
-		</references>
+    <section anchor="Privacy" title="Privacy Considerations">
+      <t>TODO</t>
+    </section>
 
-		<section title="Change History">
+    <section anchor="IANA" title="IANA Considerations">
+      <t>This specification registers the "whoami" well-known URI in the
+      "Well-Known URIs" registry as defined by <xref target="RFC5785"/>.</t>
+      <t>URI suffix:  whoami</t>
+      <t>Change controller:  IETF</t>
+      <t>Specification document(s):  (this document)</t>
+      <t>Related information:  no remarks</t>
+    </section>
+  </middle>
 
-			<section title="Change from 01 to 02" anchor="change-01-to-02">
-				<t><list style="numbers">
-					<t>Removed all the layer-9 stuff.</t>
-				</list></t>
-			</section>
+  <back>
+    <references title="Normative References">
+    &RFC2119;
+    &RFC2397;
+    &RFC2818;
+    &RFC5785;
+    &RFC6335;
+    &RFC7553;
+    </references>
+    <references title="Informative References">
+    &RFC3912;
+    &RFC7480;
+    </references>
 
-			<section title="Change from 00 to 01" anchor="change-00-to-01">
-				<t><list style="numbers">
-					<t>Fixed well-known URI registration, various typos. Improved consistency of terminology.</t>
-				</list></t>
-			</section>
+    <section title="Change History">
 
-		</section>
-	</back>
+      <section title="Change from 01 to 02" anchor="change-01-to-02">
+        <t><list style="numbers">
+          <t>Removed all the layer-9 stuff.</t>
+        </list></t>
+      </section>
+
+      <section title="Change from 00 to 01" anchor="change-00-to-01">
+        <t><list style="numbers">
+          <t>Fixed well-known URI registration, various typos. Improved consistency of terminology.</t>
+        </list></t>
+      </section>
+
+    </section>
+  </back>
 </rfc>

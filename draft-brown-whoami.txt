@@ -66,10 +66,12 @@ Table of Contents
      2.1.  URI Record  . . . . . . . . . . . . . . . . . . . . . . .   3
        2.1.1.  URI Record with a data: scheme  . . . . . . . . . . .   3
      2.2.  Well-Known URL  . . . . . . . . . . . . . . . . . . . . .   3
-   3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
-   4.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   4
-     4.1.  Normative References  . . . . . . . . . . . . . . . . . .   4
-     4.2.  Informative References  . . . . . . . . . . . . . . . . .   5
+   3.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
+   4.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .   4
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
+   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   4
+     6.1.  Normative References  . . . . . . . . . . . . . . . . . .   4
+     6.2.  Informative References  . . . . . . . . . . . . . . . . .   5
    Appendix A.  Change History . . . . . . . . . . . . . . . . . . .   5
      A.1.  Change from 01 to 02  . . . . . . . . . . . . . . . . . .   5
      A.2.  Change from 00 to 01  . . . . . . . . . . . . . . . . . .   5
@@ -102,8 +104,6 @@ Table of Contents
    Software which consumes WHOAMI records SHOULD first perform a DNS
    query for the URI record for a Domain, falling back to the well-known
    URL if the query does not return a positive result.
-
-
 
 
 
@@ -172,7 +172,15 @@ Internet-Draft                   WHOAMI                         May 2018
 
    The Content-Type header of the server response MUST be "text/vcard".
 
-3.  IANA Considerations
+3.  Security Considerations
+
+   TODO
+
+4.  Privacy Considerations
+
+   TODO
+
+5.  IANA Considerations
 
    This specification registers the "whoami" well-known URI in the
    "Well-Known URIs" registry as defined by [RFC5785].
@@ -185,9 +193,9 @@ Internet-Draft                   WHOAMI                         May 2018
 
    Related information: no remarks
 
-4.  References
+6.  References
 
-4.1.  Normative References
+6.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -207,6 +215,17 @@ Internet-Draft                   WHOAMI                         May 2018
               DOI 10.17487/RFC5785, April 2010,
               <https://www.rfc-editor.org/info/rfc5785>.
 
+
+
+
+
+
+
+Brown                   Expires November 24, 2018               [Page 4]
+
+Internet-Draft                   WHOAMI                         May 2018
+
+
    [RFC6335]  Cotton, M., Eggert, L., Touch, J., Westerlund, M., and S.
               Cheshire, "Internet Assigned Numbers Authority (IANA)
               Procedures for the Management of the Service Name and
@@ -219,14 +238,7 @@ Internet-Draft                   WHOAMI                         May 2018
               DOI 10.17487/RFC7553, June 2015,
               <https://www.rfc-editor.org/info/rfc7553>.
 
-
-
-Brown                   Expires November 24, 2018               [Page 4]
-
-Internet-Draft                   WHOAMI                         May 2018
-
-
-4.2.  Informative References
+6.2.  Informative References
 
    [RFC3912]  Daigle, L., "WHOIS Protocol Specification", RFC 3912,
               DOI 10.17487/RFC3912, September 2004,
@@ -259,18 +271,6 @@ Author's Address
    Phone: +44 20 33 88 0600
    Email: gavin.brown@centralnic.com
    URI:   https://www.centralnic.com
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

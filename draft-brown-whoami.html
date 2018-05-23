@@ -380,10 +380,12 @@
 <link href="#rfc.section.2.1" rel="Chapter" title="2.1 URI Record">
 <link href="#rfc.section.2.1.1" rel="Chapter" title="2.1.1 URI Record with a data: scheme">
 <link href="#rfc.section.2.2" rel="Chapter" title="2.2 Well-Known URL">
-<link href="#rfc.section.3" rel="Chapter" title="3 IANA Considerations">
-<link href="#rfc.references" rel="Chapter" title="4 References">
-<link href="#rfc.references.1" rel="Chapter" title="4.1 Normative References">
-<link href="#rfc.references.2" rel="Chapter" title="4.2 Informative References">
+<link href="#rfc.section.3" rel="Chapter" title="3 Security Considerations">
+<link href="#rfc.section.4" rel="Chapter" title="4 Privacy Considerations">
+<link href="#rfc.section.5" rel="Chapter" title="5 IANA Considerations">
+<link href="#rfc.references" rel="Chapter" title="6 References">
+<link href="#rfc.references.1" rel="Chapter" title="6.1 Normative References">
+<link href="#rfc.references.2" rel="Chapter" title="6.2 Informative References">
 <link href="#rfc.appendix.A" rel="Chapter" title="A Change History">
 <link href="#rfc.appendix.A.1" rel="Chapter" title="A.1 Change from 01 to 02">
 <link href="#rfc.appendix.A.2" rel="Chapter" title="A.2 Change from 00 to 01">
@@ -458,13 +460,17 @@
 </li>
 </ul><li>2.2.   <a href="#rfc.section.2.2">Well-Known URL</a>
 </li>
-</ul><li>3.   <a href="#rfc.section.3">IANA Considerations</a>
+</ul><li>3.   <a href="#rfc.section.3">Security Considerations</a>
 </li>
-<li>4.   <a href="#rfc.references">References</a>
+<li>4.   <a href="#rfc.section.4">Privacy Considerations</a>
 </li>
-<ul><li>4.1.   <a href="#rfc.references.1">Normative References</a>
+<li>5.   <a href="#rfc.section.5">IANA Considerations</a>
 </li>
-<li>4.2.   <a href="#rfc.references.2">Informative References</a>
+<li>6.   <a href="#rfc.references">References</a>
+</li>
+<ul><li>6.1.   <a href="#rfc.references.1">Normative References</a>
+</li>
+<li>6.2.   <a href="#rfc.references.2">Informative References</a>
 </li>
 </ul><li>Appendix A.   <a href="#rfc.appendix.A">Change History</a>
 </li>
@@ -496,7 +502,7 @@
 <pre>$ORIGIN example.com.
 _nicname._tcp IN URI 10 1 https://example.com/whoami/whoami.vcf</pre>
 <p id="rfc.section.2.1.p.2">Note: the Owner Name, Priority, Weight, and Target in the above record are illustrative only.</p>
-<p id="rfc.section.2.1.p.3">The Service Tag of the URI record is constructed as per Section 4.1 of <a href="#RFC7553" class="xref">[RFC7553]</a>, with the "_nicname" tag being derived from the "Who Is Protocol" entry in the "Service	Name and Transport Protocol Port Number Registry (see <a href="#RFC6335" class="xref">[RFC6335]</a>).</p>
+<p id="rfc.section.2.1.p.3">The Service Tag of the URI record is constructed as per Section 4.1 of <a href="#RFC7553" class="xref">[RFC7553]</a>, with the "_nicname" tag being derived from the "Who Is Protocol" entry in the "Service  Name and Transport Protocol Port Number Registry (see <a href="#RFC6335" class="xref">[RFC6335]</a>).</p>
 <h1 id="rfc.section.2.1.1">
 <a href="#rfc.section.2.1.1">2.1.1.</a> URI Record with a data: scheme</h1>
 <p id="rfc.section.2.1.1.p.1">Domain Operators MAY publish a record with a "data:" scheme (<a href="#RFC2397" class="xref">[RFC2397]</a>).  This allows the WHOAMI record to be embedded in the URI record itself. An example of such a URI is below:</p>
@@ -516,17 +522,25 @@ BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
 <p id="rfc.section.2.2.p.4">Software which consumes WHOAMI records MUST follow 3xx redirections return in server responses.</p>
 <p id="rfc.section.2.2.p.5">The Content-Type header of the server response MUST be "text/vcard".</p>
 <h1 id="rfc.section.3">
-<a href="#rfc.section.3">3.</a> <a href="#IANA" id="IANA">IANA Considerations</a>
+<a href="#rfc.section.3">3.</a> <a href="#Security" id="Security">Security Considerations</a>
 </h1>
-<p id="rfc.section.3.p.1">This specification registers the "whoami" well-known URI in the "Well-Known URIs" registry as defined by <a href="#RFC5785" class="xref">[RFC5785]</a>.</p>
-<p id="rfc.section.3.p.2">URI suffix:  whoami</p>
-<p id="rfc.section.3.p.3">Change controller:  IETF</p>
-<p id="rfc.section.3.p.4">Specification document(s):  (this document)</p>
-<p id="rfc.section.3.p.5">Related information:  no remarks</p>
+<p id="rfc.section.3.p.1">TODO</p>
+<h1 id="rfc.section.4">
+<a href="#rfc.section.4">4.</a> <a href="#Privacy" id="Privacy">Privacy Considerations</a>
+</h1>
+<p id="rfc.section.4.p.1">TODO</p>
+<h1 id="rfc.section.5">
+<a href="#rfc.section.5">5.</a> <a href="#IANA" id="IANA">IANA Considerations</a>
+</h1>
+<p id="rfc.section.5.p.1">This specification registers the "whoami" well-known URI in the "Well-Known URIs" registry as defined by <a href="#RFC5785" class="xref">[RFC5785]</a>.</p>
+<p id="rfc.section.5.p.2">URI suffix:  whoami</p>
+<p id="rfc.section.5.p.3">Change controller:  IETF</p>
+<p id="rfc.section.5.p.4">Specification document(s):  (this document)</p>
+<p id="rfc.section.5.p.5">Related information:  no remarks</p>
 <h1 id="rfc.references">
-<a href="#rfc.references">4.</a> References</h1>
+<a href="#rfc.references">6.</a> References</h1>
 <h1 id="rfc.references.1">
-<a href="#rfc.references.1">4.1.</a> Normative References</h1>
+<a href="#rfc.references.1">6.1.</a> Normative References</h1>
 <table><tbody>
 <tr>
 <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
@@ -560,7 +574,7 @@ BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
 </tr>
 </tbody></table>
 <h1 id="rfc.references.2">
-<a href="#rfc.references.2">4.2.</a> Informative References</h1>
+<a href="#rfc.references.2">6.2.</a> Informative References</h1>
 <table><tbody>
 <tr>
 <td class="reference"><b id="RFC3912">[RFC3912]</b></td>
