@@ -397,7 +397,7 @@
 
   <meta name="dct.creator" content="Brown, G." />
   <meta name="dct.identifier" content="urn:ietf:id:draft-brown-whoami-02" />
-  <meta name="dct.issued" scheme="ISO8601" content="2018-5-23" />
+  <meta name="dct.issued" scheme="ISO8601" content="2018-6-1" />
   <meta name="dct.abstract" content="This document proposes a method by which the operator of a domain may publish their contact information in a discoverable and machine-readable format." />
   <meta name="description" content="This document proposes a method by which the operator of a domain may publish their contact information in a discoverable and machine-readable format." />
 
@@ -418,10 +418,10 @@
 </tr>
 <tr>
 <td class="left">Intended status: Experimental</td>
-<td class="right">May 23, 2018</td>
+<td class="right">June 1, 2018</td>
 </tr>
 <tr>
-<td class="left">Expires: November 24, 2018</td>
+<td class="left">Expires: December 3, 2018</td>
 <td class="right"></td>
 </tr>
 
@@ -438,7 +438,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on November 24, 2018.</p>
+<p>This Internet-Draft will expire on December 3, 2018.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.</p>
@@ -501,7 +501,7 @@
 <p id="rfc.section.2.1.p.1">Domain Operators MAY publish the URL of their WHOAMI record as a URI record in the DNS. An example of such a record is below:</p>
 <pre>$ORIGIN example.com.
 _nicname._tcp IN URI 10 1 https://example.com/whoami/whoami.vcf</pre>
-<p id="rfc.section.2.1.p.2">Note: the Owner Name, Priority, Weight, and Target in the above record are illustrative only.</p>
+<p id="rfc.section.2.1.p.2">Note: the Owner Name, Priority, Weight, Target and URI in the above record are illustrative only.</p>
 <p id="rfc.section.2.1.p.3">The Service Tag of the URI record is constructed as per Section 4.1 of <a href="#RFC7553" class="xref">[RFC7553]</a>, with the "_nicname" tag being derived from the "Who Is Protocol" entry in the "Service Name and Transport Protocol Port Number Registry (see <a href="#RFC6335" class="xref">[RFC6335]</a>).</p>
 <h1 id="rfc.section.2.1.1">
 <a href="#rfc.section.2.1.1">2.1.1.</a> URI Record with a data: scheme</h1>
@@ -525,7 +525,7 @@ BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
 <a href="#rfc.section.3">3.</a> <a href="#Security" id="Security">Security Considerations</a>
 </h1>
 <p id="rfc.section.3.p.1">WHOAMI provides no security capabilities above and beyond those provided by the underlying protocols it uses, namely DNS and HTTP.</p>
-<p id="rfc.section.3.p.2">WHOAMI records in general will not be confidential: while HTTPS provides transport-layer security, unless some form of authentication is used, WHOAMI records will be freely available to anyone who requests them.</p>
+<p id="rfc.section.3.p.2">WHOAMI records in general will not be confidential: while HTTPS provides transport-layer security, unless some form of authentication is used, WHOAMI records will be freely available to anyone who requests them. Authentication of client requests is not covered by this document.</p>
 <p id="rfc.section.3.p.3">The integrity of WHOAMI records served over DNS may be verified using DNSSEC validation. The use of TLS ensures that records served over HTTPS have not been modified in-transit.</p>
 <h1 id="rfc.section.4">
 <a href="#rfc.section.4">4.</a> <a href="#Privacy" id="Privacy">Privacy Considerations</a>

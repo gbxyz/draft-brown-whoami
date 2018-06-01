@@ -4,8 +4,8 @@
 
 Internet Engineering Task Force                                 G. Brown
 Internet-Draft                                      CentralNic Group plc
-Intended status: Experimental                               May 23, 2018
-Expires: November 24, 2018
+Intended status: Experimental                               June 1, 2018
+Expires: December 3, 2018
 
 
 WHOAMI: A Method For Identifying a Domain Operator's Contact Information
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on November 24, 2018.
+   This Internet-Draft will expire on December 3, 2018.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Brown                   Expires November 24, 2018               [Page 1]
+Brown                   Expires December 3, 2018                [Page 1]
 
-Internet-Draft                   WHOAMI                         May 2018
+Internet-Draft                   WHOAMI                        June 2018
 
 
 Table of Contents
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Brown                   Expires November 24, 2018               [Page 2]
+Brown                   Expires December 3, 2018                [Page 2]
 
-Internet-Draft                   WHOAMI                         May 2018
+Internet-Draft                   WHOAMI                        June 2018
 
 
 2.1.  URI Record
@@ -122,7 +122,7 @@ Internet-Draft                   WHOAMI                         May 2018
    $ORIGIN example.com.
    _nicname._tcp IN URI 10 1 https://example.com/whoami/whoami.vcf
 
-   Note: the Owner Name, Priority, Weight, and Target in the above
+   Note: the Owner Name, Priority, Weight, Target and URI in the above
    record are illustrative only.
 
    The Service Tag of the URI record is constructed as per Section 4.1
@@ -165,9 +165,9 @@ Internet-Draft                   WHOAMI                         May 2018
 
 
 
-Brown                   Expires November 24, 2018               [Page 3]
+Brown                   Expires December 3, 2018                [Page 3]
 
-Internet-Draft                   WHOAMI                         May 2018
+Internet-Draft                   WHOAMI                        June 2018
 
 
    The Content-Type header of the server response MUST be "text/vcard".
@@ -180,7 +180,8 @@ Internet-Draft                   WHOAMI                         May 2018
    WHOAMI records in general will not be confidential: while HTTPS
    provides transport-layer security, unless some form of authentication
    is used, WHOAMI records will be freely available to anyone who
-   requests them.
+   requests them.  Authentication of client requests is not covered by
+   this document.
 
    The integrity of WHOAMI records served over DNS may be verified using
    DNSSEC validation.  The use of TLS ensures that records served over
@@ -220,10 +221,9 @@ Internet-Draft                   WHOAMI                         May 2018
 
 
 
-
-Brown                   Expires November 24, 2018               [Page 4]
+Brown                   Expires December 3, 2018                [Page 4]
 
-Internet-Draft                   WHOAMI                         May 2018
+Internet-Draft                   WHOAMI                        June 2018
 
 
    [RFC2397]  Masinter, L., "The "data" URL scheme", RFC 2397,
@@ -277,9 +277,9 @@ A.2.  Change from 00 to 01
 
 
 
-Brown                   Expires November 24, 2018               [Page 5]
+Brown                   Expires December 3, 2018                [Page 5]
 
-Internet-Draft                   WHOAMI                         May 2018
+Internet-Draft                   WHOAMI                        June 2018
 
 
 Author's Address
@@ -333,4 +333,4 @@ Author's Address
 
 
 
-Brown                   Expires November 24, 2018               [Page 6]
+Brown                   Expires December 3, 2018                [Page 6]

@@ -59,7 +59,7 @@
         <uri>https://www.centralnic.com</uri>
       </address>
     </author>
-    <date month="May" year="2018" />
+    <date month="June" year="2018" />
     <area>Applications</area>
     <workgroup>Internet Engineering Task Force</workgroup>
 
@@ -110,7 +110,7 @@
 _nicname._tcp IN URI 10 1 https://example.com/whoami/whoami.vcf</artwork>
         </figure>
 
-        <t>Note: the Owner Name, Priority, Weight, and Target in the
+        <t>Note: the Owner Name, Priority, Weight, Target and URI in the
         above record are illustrative only.</t>
 
         <t>The Service Tag of the URI record is constructed as per
@@ -170,7 +170,8 @@ BleGFtcGxlLmNvbQ0KQ0xJRU5UUElETUFQOjE7dXJuOnV1aWQ6NTNlMzc0ZDktMzM3ZS0
       <t>WHOAMI records in general will not be confidential: while HTTPS
       provides transport-layer security, unless some form of
       authentication is used, WHOAMI records will be freely available to
-      anyone who requests them.</t>
+      anyone who requests them. Authentication of client requests is not
+      covered by this document.</t>
 
       <t>The integrity of WHOAMI records served over DNS may be verified
       using DNSSEC validation. The use of TLS ensures that records
